@@ -1,0 +1,19 @@
+
+
+@font-face {
+  font-family: "Public Sans";
+  src: local("Public Sans"),
+    url("assets/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ibarra Real Nova";
+  src: local("Ibarra Real Nova"),
+    url("assets/fonts/Ibarra_Real_Nova/IbarraRealNova-VariableFont_wght.ttf") format("truetype");
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
