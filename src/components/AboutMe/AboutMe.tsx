@@ -1,6 +1,10 @@
 import * as SC from "./AboutMeStyled"
 
 import avatarPic from "../../assets/images/portfolio.jpeg"
+import LinkButton from "../LinkButton/LinkButton";
+
+const pathText = "go to portfolio";
+const path = "/portfolio"
 
 const AboutMe: React.FC = (): JSX.Element => {
     return (<div >
@@ -15,7 +19,7 @@ const AboutMe: React.FC = (): JSX.Element => {
                 🔥 Passion, proficiency, and a pinch of pizzazz – that's what I bring to the table. Let's connect and weave lines of code into sheer awesomeness!
                 Ready to take the plunge into the world of MERN magic? Let's code our way to greatness!
                 Go ahead and add your own flair to the text, highlighting your unique skills and personality. Remember, your "About Me" section is your chance to make a memorable impression on potential collaborators, so make it shine! If you have any more requests or need further help, feel free to ask. Happy coding!</SC.Text>
-            <SC.ButtonLink to="/portfolio">go to portfolio</SC.ButtonLink>
+            <LinkButton path={path} text={pathText} />
         </SC.ContentContainer>
     </div> );
 }

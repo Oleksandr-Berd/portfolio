@@ -76,6 +76,7 @@ const theme: object = {
     cyan: "#5FB4A2",
     dark: "#203A4C",
     grayish: "#33323D",
+    border: "#979797",
 
     white: "#ffffff",
     main: "#10141E",

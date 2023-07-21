@@ -4,6 +4,9 @@ import styled from "styled-components";
 export const ContentContainer = styled.div`
   padding-top: ${(props) => props.theme.space[8]};
   padding-bottom: 51px;
+
+  border-bottom: 1px solid ${(props) => props.theme.color.border};
+  border-top: 1px solid ${(props) => props.theme.color.border};
 `;
 
 export const AvatarPic = styled.img`
@@ -28,18 +31,4 @@ export const Text = styled.p`
   line-height: 1.88;
 `;
 
-export const ButtonLink = styled(NavLink)`
-  display: inline-block;
 
-  padding-top: 17px;
-  padding-bottom: 17px;
-  padding-left: ${(props) => props.theme.space[8]};
-  padding-right: ${(props) => props.theme.space[9]};
-
-  text-decoration: none;
-  text-transform: uppercase;
-  color: ${(props) => props.theme.color.grayish};
-  background-color: transparent;
-
-  border: 1px solid ${(props) => props.theme.color.grayish};
-`;
