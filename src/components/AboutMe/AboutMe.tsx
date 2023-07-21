@@ -5,7 +5,7 @@ import avatarPic from "../../assets/images/portfolio.jpeg"
 const AboutMe: React.FC = (): JSX.Element => {
     return (<div >
         <SC.AvatarPic src={avatarPic} alt="avatar" />
-        <SC.ContentContainer id="#aboutMe">
+        <SC.ContentContainer id="aboutMe">
             <SC.Title>About Me</SC.Title>
             <SC.Text>Hey there, fellow tech enthusiasts!
                 👨‍💻 Imagine a passionate developer who dances effortlessly with the MERN (MongoDB, Express.js, React, Node.js) tech stack. Well, that's me!

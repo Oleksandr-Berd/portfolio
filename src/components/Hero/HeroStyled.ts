@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
@@ -20,7 +19,7 @@ export const Title = styled.h2`
   letter-spacing: -0.36px;
 `;
 
-export const ButtonLink = styled(NavLink)`
+export const ButtonLink = styled.a`
   display: inline-flex;
   flex-direction: row;
   align-items: center;

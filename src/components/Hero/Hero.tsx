@@ -8,7 +8,7 @@ const Hero: React.FC = (): JSX.Element => {
     return (<SC.HeroContainer>
         <SC.HeroPic src={heroMobile} alt="" />
         <SC.Title>Hey, I’m Alex Berdychevskyi and I love programming efficient  and beautiful Apps</SC.Title>
-        <SC.ButtonLink to="#aboutMe">
+        <SC.ButtonLink href="#aboutMe">
             <SC.IconContainer>
                 <DownArrowsSvg/>
             </SC.IconContainer>

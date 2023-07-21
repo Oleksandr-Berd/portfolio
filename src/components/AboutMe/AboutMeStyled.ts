@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ContentContainer = styled.div`
   padding-top: ${(props) => props.theme.space[8]};
-  padding-bottom:51px;
+  padding-bottom: 51px;
 `;
 
 export const AvatarPic = styled.img`
@@ -22,6 +22,8 @@ export const Title = styled.h3`
 `;
 
 export const Text = styled.p`
+  margin-bottom: ${(props) => props.theme.space[6]};
+
   font-size: ${(props) => props.theme.size.N};
   line-height: 1.88;
 `;
