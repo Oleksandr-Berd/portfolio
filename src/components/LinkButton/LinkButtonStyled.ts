@@ -11,8 +11,8 @@ export const ButtonLink = styled(NavLink)`
 
   text-decoration: none;
   text-transform: uppercase;
-  color: ${(props) => props.theme.color.grayish};
+  color: ${(props) => props.theme.color.mainText};
   background-color: transparent;
 
-  border: 1px solid ${(props) => props.theme.color.grayish};
+  border: 1px solid ${(props) => props.theme.color.mainText};
 `;

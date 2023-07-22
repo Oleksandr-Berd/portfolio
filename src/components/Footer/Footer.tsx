@@ -10,7 +10,7 @@ const Footer: React.FC = (): JSX.Element => {
     return (<SC.FooterStyled>
         <LogoSVG style={{marginBottom: "40px"}} fill="white"/>
         <NavBar navList={<PageNav />} margin={"40px"} />
-        <NavBar navList={<SocNet />} />
+        <NavBar navList={<SocNet theme="light" $justified="center"/>} />
     </SC.FooterStyled> );
 }
  

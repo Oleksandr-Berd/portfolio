@@ -54,7 +54,7 @@ const theme: object = {
     XXN: "24px",
     XN: "20px",
     N: "16px",
-    S: "14px",
+    S: "15px",
     XS: "12px",
   },
 
@@ -75,7 +75,7 @@ const theme: object = {
     bg: "#FAFAFA",
     cyan: "#5FB4A2",
     dark: "#203A4C",
-    grayish: "#33323D",
+    mainText: "#33323D",
     border: "#979797",
 
     white: "#ffffff",
