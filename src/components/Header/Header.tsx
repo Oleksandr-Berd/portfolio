@@ -1,7 +1,7 @@
 import * as SC from "./HeaderStyled"
 
 import { ReactComponent as LogoSVG } from "../../assets/images/logo.svg"
-import HamburgerMenu from "../BurgerMenu/PopOver";
+import HamburgerMenu from "../BurgerMenu/HamburgerMenu";
 import { useState } from "react";
 
 
