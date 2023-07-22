@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 
 export interface IContentProp {
-  content: string;
+    content: string;
 }
 
 export interface IPropsInput {
@@ -11,4 +11,9 @@ export interface IPropsInput {
   label: string;
     errorMessage: string | undefined;
     handleChange: (evt:ChangeEvent<HTMLInputElement>)=>void
+}
+
+export interface IBurgerMenuProps {
+  handleMenu: () => void;
+  isOpen?: boolean;
 }
