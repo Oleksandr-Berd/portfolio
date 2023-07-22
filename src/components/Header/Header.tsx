@@ -1,10 +1,18 @@
 import * as SC from "./HeaderStyled"
 
 import { ReactComponent as LogoSVG } from "../../assets/images/logo.svg"
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import HamburgerMenu from "../BurgerMenu/HamburgerMenu";
+import { useState } from "react";
+
 
 const Header: React.FC = (): JSX.Element => {
-    return (<SC.HeaderStyled><LogoSVG fill="#33323D"/> <BurgerMenu/></SC.HeaderStyled> );
+const [isOpened, setIsOpened] = useState<boolean>(false)
+
+    const handleMenu = () => {
+        setIsOpened(!isOpened)
+    }
+
+    return (<SC.HeaderStyled><LogoSVG fill="#33323D" /> <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /></SC.HeaderStyled> );
 }
  
 export default Header;
