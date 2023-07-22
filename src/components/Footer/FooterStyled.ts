@@ -5,5 +5,5 @@ export const FooterStyled = styled.footer`
   padding-bottom: ${(props) => props.theme.space[12]};
 
   text-align: center;
-  background-color: ${(props) => props.theme.color.grayish};
+  background-color: ${(props) => props.theme.color.mainText};
 `;

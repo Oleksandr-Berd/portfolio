@@ -6,8 +6,7 @@ export const GlobalStyles = createGlobalStyle`
 
 body{
 margin: 0;
-
-
+color: ${props => props.theme.color.mainText}
 }
 
 h1, h2, h3, h4 , h5 ,h6{
