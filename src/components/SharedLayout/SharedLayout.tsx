@@ -5,10 +5,12 @@ import { Outlet } from "react-router-dom"
 import * as SC from "./SharedLayoutStyled"
 
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const SharedLayout:React.FC = (): JSX.Element => {
     return (<SC.LayoutStyled>
-        <Header/>
+        <Header />
+        <SC.MainStyled>
         <Suspense fallback={<Dna
             visible={true}
             height="80"
@@ -18,7 +20,9 @@ const SharedLayout:React.FC = (): JSX.Element => {
             wrapperClass="dna-wrapper"
         />}>
 <Outlet/>
-        </Suspense>
+            </Suspense>
+        </SC.MainStyled>
+        <Footer/>
     </SC.LayoutStyled> );
 }
  

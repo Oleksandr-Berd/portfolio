@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`
@@ -24,11 +23,15 @@ export const Title = styled.h3`
   letter-spacing: -0.36px;
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
   margin-bottom: ${(props) => props.theme.space[6]};
 
   font-size: ${(props) => props.theme.size.N};
   line-height: 1.88;
+
+  & > * {
+    margin-bottom: ${(props) => props.theme.space[6]};
+  }
 `;
 
 
