@@ -42,17 +42,19 @@ evt.preventDefault()
 
     
     return (<SC.CommonContainer>
-        <h2>Login to Get the Admin's Permissions</h2>
+        <SC.Title>Login to Get the Admin's Permissions</SC.Title>
         <form onSubmit={handleSubmit}>
-            <fieldset>
+            <SC.FieldStyled>
                 <legend>Email</legend>
-                <input type="text" name="email" onChange={handleChange}/>
-            </fieldset>
-            <fieldset>
+                <SC.InputStyled type="text" name="email" onChange={handleChange} placeholder="type your email"/>
+            </SC.FieldStyled>
+            {formik.errors.email ? <SC.ErrorStyled>{formik.errors.email}</SC.ErrorStyled> : <SC.ErrorStyled style={{ color: "transparent" }}>error</SC.ErrorStyled>}
+            <SC.FieldStyled>
                 <legend>Password</legend>
-                <input type="text" name="password" onChange={handleChange} />
-            </fieldset>
-            <button type="submit">Login</button>
+                <SC.InputStyled type="text" name="password" onChange={handleChange} placeholder="enter your password"/>
+            </SC.FieldStyled>
+            {formik.errors.password ? <SC.ErrorStyled>{formik.errors.password}</SC.ErrorStyled> : <SC.ErrorStyled style={{ color: "transparent" }}>error</SC.ErrorStyled>}
+            <SC.SubmitButton type="submit">Login</SC.SubmitButton>
         </form>
     </SC.CommonContainer>);
 }
