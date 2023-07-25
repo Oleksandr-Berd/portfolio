@@ -9,7 +9,28 @@ const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => 
     const handleClick = (evt: React.MouseEvent<HTMLElement>): void => {
         const target = evt.currentTarget as HTMLElement;
         const text = target.textContent;
-        const path = text === "home" ? "/" : text === "contact me" ? "contact" : "portfolio";
+
+        let path: string
+
+        switch (text) {
+            case "home":
+                path = "/"
+                break
+            case "portfolio":
+                path = "portfolio"
+                break
+            case "contact me":
+                path = "contact"
+                break
+            case "add project":
+                path = "admin/project"
+                break
+            default:
+                return
+        }
+
+
+        // const path = text === "home" ? "/" : text === "contact me" ? "contact" : "portfolio" ? "portfolio" : "admin/project";
         handleMenu();
         navigate(path);
     };
@@ -20,6 +41,7 @@ const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => 
                 <MenuItem onClick={handleClick} text="home" />
                 <MenuItem onClick={handleClick} text="portfolio" />
                 <MenuItem onClick={handleClick} text="contact me" />
+                <MenuItem onClick={handleClick} text="add project" />
             </SC.MenuStyled>
         </div>
     );

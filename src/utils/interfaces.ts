@@ -17,3 +17,5 @@ export interface IBurgerMenuProps {
   handleMenu: () => void;
   isOpen?: boolean;
 }
+
+export type Data = { email: String; password: String };
