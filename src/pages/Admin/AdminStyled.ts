@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const CommonContainer = styled.div`
   padding-top: ${(props) => props.theme.space[15]};
   padding-bottom: ${(props) => props.theme.space[17]};
+  
 
   text-align: center;
+`;
+
+export const FormStyled = styled.form`
 `;
 
 export const Title = styled.h2`

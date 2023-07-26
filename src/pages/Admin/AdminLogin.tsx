@@ -43,7 +43,7 @@ evt.preventDefault()
     
     return (<SC.CommonContainer>
         <SC.Title>Login to Get the Admin's Permissions</SC.Title>
-        <form onSubmit={handleSubmit}>
+        <SC.FormStyled onSubmit={handleSubmit}>
             <SC.FieldStyled>
                 <legend>Email</legend>
                 <SC.InputStyled type="text" name="email" onChange={handleChange} placeholder="type your email"/>
@@ -55,7 +55,7 @@ evt.preventDefault()
             </SC.FieldStyled>
             {formik.errors.password ? <SC.ErrorStyled>{formik.errors.password}</SC.ErrorStyled> : <SC.ErrorStyled style={{ color: "transparent" }}>error</SC.ErrorStyled>}
             <SC.SubmitButton type="submit">Login</SC.SubmitButton>
-        </form>
+        </SC.FormStyled>
     </SC.CommonContainer>);
 }
 
