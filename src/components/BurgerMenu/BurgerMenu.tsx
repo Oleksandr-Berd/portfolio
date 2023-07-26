@@ -1,10 +1,13 @@
 import { MenuItem } from "@blueprintjs/core";
-import * as SC from "./BurgerMenuStyled";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IBurgerMenuProps } from "../../utils/interfaces";
+
+import { IBurgerMenuProps, Project } from "../../utils/interfaces";
 import { useAuth } from "../../hooks";
+import * as SC from "./BurgerMenuStyled";
 
 const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => {
+
     const navigate = useNavigate();
     const { isLoggedIn } = useAuth()
 

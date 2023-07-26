@@ -1,21 +1,52 @@
-import { Radio, RadioChangeEvent } from "antd";
-import TechStackCheck from "./TechStack";
+import { Radio } from "antd";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+
 import { logout } from "../../redux/auth/operations";
+import { ChangeEvent } from "react";
+import { Project } from "../../utils/interfaces";
 
-const AddProject: React.FC = (): JSX.Element => {
+interface IProps {
+    submit: (data: Project) => void
+}
 
-const dispatch =useDispatch()
-const navigate = useNavigate()
-    const onChange = (evt: RadioChangeEvent): void => {
-        console.log(`radio checked:${evt.target.value}`);
-    };
 
-    const logoutAdmin = ():void => {
+const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
+
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+    const handleChange = (evt: ChangeEvent<HTMLInputElement> | any): void => {
+
+        formik.handleChange(evt)
+    }
+
+    const logoutAdmin = (): void => {
         dispatch(logout())
         navigate("/")
-}
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            techStack: [],
+            title: "",
+            task: "",
+            liveUrl: "",
+            coverImage: "",
+            summary: "",
+            preview: [],
+            difficulty: "",
+        }, onSubmit: (values) => console.log(values)
+
+    })
+
+    const { techStack, title, task, liveUrl, coverImage, summary, preview, difficulty } = formik.values
+
+    console.log(techStack, title, task, liveUrl, coverImage, summary, preview, difficulty);
+
 
     return (<div>
         <div>
@@ -24,32 +55,51 @@ const navigate = useNavigate()
         <form>
             <fieldset>
                 <legend>Title</legend>
-                <input type="text" name="title" />
+                <input type="text" name="title" onChange={handleChange} />
             </fieldset>
             <fieldset>
                 <legend>Task</legend>
-                <textarea name="task"></textarea>
+                <textarea name="task" onChange={handleChange}></textarea>
             </fieldset>
             <fieldset>
                 <legend>Live Page</legend>
-                <input type="text" name="livePage" />
+                <input type="text" name="livePage" onChange={handleChange} />
             </fieldset>
             <fieldset>
                 <legend>Summary</legend>
-                <textarea name="summary"></textarea>
+                <textarea name="summary" onChange={handleChange}></textarea>
             </fieldset>
             <fieldset>
                 <legend>Difficulties</legend>
-                <Radio.Group onChange={onChange} defaultValue="a">
-                    <Radio.Button value="a" name="junior">Junior</Radio.Button>
-                    <Radio.Button value="b" name="intermediate">Intermediate</Radio.Button>
-                    <Radio.Button value="c" name="advanced">Advanced</Radio.Button>
-                    <Radio.Button value="d" name="guru">Guru</Radio.Button>
+                <Radio.Group onChange={handleChange} defaultValue="a" name="difficulty">
+                    <Radio.Button value="Junior" >Junior</Radio.Button>
+                    <Radio.Button value="Intermediate" >Intermediate</Radio.Button>
+                    <Radio.Button value="Advanced" >Advanced</Radio.Button>
+                    <Radio.Button value="Guru" >Guru</Radio.Button>
                 </Radio.Group>
             </fieldset>
-            <fieldset>
+            <fieldset onChange={handleChange} name="techStack">
                 <legend>Tech Stack</legend>
-                <TechStackCheck />
+                <label>
+                    <input type="checkbox" name="techStack"  value="React" />
+                    React
+                </label>
+                <label >
+                    <input type="checkbox" name="techStack" value="MongoDB" />
+                    MongoDB
+                </label>
+                <label><input type="checkbox" name="techStack" value="NodeJs" />
+                    NodeJs
+                </label>
+                <label><input type="checkbox" name="techStack" value="TypeScript" />
+                    TypeScript
+                </label>
+                <label>
+                    <input type="checkbox" name="techStack" value="styled-components" />
+                    styled-components</label>
+                <label>
+                    <input type="checkbox" name="techStack" value="Express" />
+                    Express</label>
             </fieldset>
             <fieldset>
                 <legend>Cover Picture</legend>
