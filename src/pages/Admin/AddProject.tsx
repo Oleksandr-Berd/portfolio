@@ -1,4 +1,4 @@
-import { Checkbox, Divider, Radio, RadioChangeEvent } from "antd";
+import { Radio, RadioChangeEvent } from "antd";
 import TechStackCheck from "./TechStack";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,6 @@ const AddProject: React.FC = (): JSX.Element => {
 
 const dispatch =useDispatch()
 const navigate = useNavigate()
-    const CheckboxGroup = Checkbox.Group;
     const onChange = (evt: RadioChangeEvent): void => {
         console.log(`radio checked:${evt.target.value}`);
     };

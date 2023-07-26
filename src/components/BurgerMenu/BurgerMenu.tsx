@@ -2,9 +2,11 @@ import { MenuItem } from "@blueprintjs/core";
 import * as SC from "./BurgerMenuStyled";
 import { useNavigate } from "react-router-dom";
 import { IBurgerMenuProps } from "../../utils/interfaces";
+import { useAuth } from "../../hooks";
 
 const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => {
     const navigate = useNavigate();
+    const { isLoggedIn } = useAuth()
 
     const handleClick = (evt: React.MouseEvent<HTMLElement>): void => {
         const target = evt.currentTarget as HTMLElement;
@@ -29,8 +31,6 @@ const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => 
                 return
         }
 
-
-        // const path = text === "home" ? "/" : text === "contact me" ? "contact" : "portfolio" ? "portfolio" : "admin/project";
         handleMenu();
         navigate(path);
     };
@@ -41,7 +41,7 @@ const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => 
                 <MenuItem onClick={handleClick} text="home" />
                 <MenuItem onClick={handleClick} text="portfolio" />
                 <MenuItem onClick={handleClick} text="contact me" />
-                <MenuItem onClick={handleClick} text="add project" />
+                {isLoggedIn ? <MenuItem onClick={handleClick} text="add project" /> : null}
             </SC.MenuStyled>
         </div>
     );
