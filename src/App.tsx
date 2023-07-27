@@ -9,8 +9,9 @@ import AddProject from './pages/Admin/AddProject';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from './redux/auth/operations';
 import { Project } from './utils/interfaces';
-import { addProject } from './utils/services';
+import { addProject, updateCover } from './utils/services';
 import { useAuth } from './hooks';
+import AddImages from './pages/Admin/AddImages';
 
 const App: React.FC = (): JSX.Element => {
 
@@ -28,6 +29,10 @@ const App: React.FC = (): JSX.Element => {
 
   }
 
+  const submitCoverImage = (coverImage: object | null, title: string) => {
+    updateCover(coverImage = {}, title, token)
+
+  }
 
   return (
     <div className="App">
@@ -37,7 +42,10 @@ const App: React.FC = (): JSX.Element => {
           <Route path="portfolio" element={<PortfolioPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="admin" element={<AdminPage />} />
-          <Route path='admin/project' element={<AddProject submit={submitProjects} />} />
+          <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
+            <Route path='images' element={<AddImages submit={submitCoverImage} /> } />
+          </Route>
+          
         </Route>
 
       </Routes>

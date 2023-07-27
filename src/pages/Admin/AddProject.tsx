@@ -1,6 +1,6 @@
 import { Radio } from "antd";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 
 import { logout } from "../../redux/auth/operations";
@@ -18,13 +18,7 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
 
     
     const handleChange = (evt: ChangeEvent<HTMLInputElement> | any): void => {
-        const file = evt.target.files && evt.target.files[0];
-
-        const formData = new FormData();
-        if (file) {
-            formData.append("avatar", file, file.name);
-        }
-
+        
         formik.handleChange(evt)
     }
 
@@ -110,7 +104,9 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
             </fieldset>
             <button type="submit">Add New Project</button>
         </form>
-    </div>);
+        <NavLink to="/admin/project/images">Images</NavLink>
+        <Outlet/>
+    </div>)
 }
 
 export default AddProject;
