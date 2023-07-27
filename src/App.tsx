@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import HomePage from './pages/HomePage/HomePage';
@@ -13,7 +13,6 @@ import { addProject } from './utils/services';
 import { useAuth } from './hooks';
 
 const App: React.FC = (): JSX.Element => {
-  const [project, setProject] = useState<Project | {}>({})
 
   const { token } = useAuth()
 

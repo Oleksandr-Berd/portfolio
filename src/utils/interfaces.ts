@@ -25,7 +25,7 @@ export type Project = {
   title: string;
   task: string;
   liveUrl: string;
-  coverImage?: string;
+  coverImage?: object | null;
   summary: string;
   preview?: String[];
   difficulty: String;

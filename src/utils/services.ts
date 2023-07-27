@@ -13,7 +13,6 @@ export const addProject = async (data: {}, token:string) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response);
         
         return response
     } catch (error) {

@@ -6,7 +6,6 @@ import { useFormik } from "formik";
 import { logout } from "../../redux/auth/operations";
 import { ChangeEvent, FormEvent } from "react";
 import { Project } from "../../utils/interfaces";
-import { useAuth } from "../../hooks";
 
 interface IProps {
     submit: (data: Project) => void
@@ -14,15 +13,17 @@ interface IProps {
 
 
 const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
-
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {user} = useAuth()
 
     
-const token = user.token
     const handleChange = (evt: ChangeEvent<HTMLInputElement> | any): void => {
+        const file = evt.target.files && evt.target.files[0];
+
+        const formData = new FormData();
+        if (file) {
+            formData.append("avatar", file, file.name);
+        }
 
         formik.handleChange(evt)
     }
@@ -32,15 +33,12 @@ const token = user.token
         navigate("/")
     }
 
-
-
     const formik = useFormik({
         initialValues: {
             techStack: [],
             title: "",
             task: "",
             liveUrl: "",
-            coverImage: "",
             summary: "",
             preview: [],
             difficulty: "",
@@ -48,13 +46,14 @@ const token = user.token
 
     })
 
-    const { techStack, title, task, liveUrl, coverImage, summary, preview, difficulty } = formik.values
+    const { techStack, title, task, liveUrl, summary, difficulty } = formik.values
 
     const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault()
 
         submit({ techStack, title, task, liveUrl, summary, difficulty })
-    }
+    } 
+
 
     return (<div>
         <div>
@@ -108,14 +107,6 @@ const token = user.token
                 <label>
                     <input type="checkbox" name="techStack" value="Express" />
                     Express</label>
-            </fieldset>
-            <fieldset>
-                <legend>Cover Picture</legend>
-                <input type="file" />
-            </fieldset>
-            <fieldset>
-                <legend>Preview</legend>
-                <input type="file" />
             </fieldset>
             <button type="submit">Add New Project</button>
         </form>
