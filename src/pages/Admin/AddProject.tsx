@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 
 import { logout } from "../../redux/auth/operations";
-import { ChangeEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { Project } from "../../utils/interfaces";
+import { useAuth } from "../../hooks";
 
 interface IProps {
     submit: (data: Project) => void
@@ -17,8 +18,10 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const {user} = useAuth()
 
-
+    
+const token = user.token
     const handleChange = (evt: ChangeEvent<HTMLInputElement> | any): void => {
 
         formik.handleChange(evt)
@@ -28,6 +31,8 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
         dispatch(logout())
         navigate("/")
     }
+
+
 
     const formik = useFormik({
         initialValues: {
@@ -45,14 +50,17 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
 
     const { techStack, title, task, liveUrl, coverImage, summary, preview, difficulty } = formik.values
 
-    console.log(techStack, title, task, liveUrl, coverImage, summary, preview, difficulty);
+    const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+        evt.preventDefault()
 
+        submit({ techStack, title, task, liveUrl, summary, difficulty })
+    }
 
     return (<div>
         <div>
             <button onClick={logoutAdmin}>Leave Admin mode</button>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
             <fieldset>
                 <legend>Title</legend>
                 <input type="text" name="title" onChange={handleChange} />
@@ -63,7 +71,7 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
             </fieldset>
             <fieldset>
                 <legend>Live Page</legend>
-                <input type="text" name="livePage" onChange={handleChange} />
+                <input type="text" name="liveUrl" onChange={handleChange} />
             </fieldset>
             <fieldset>
                 <legend>Summary</legend>
@@ -81,7 +89,7 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
             <fieldset onChange={handleChange} name="techStack">
                 <legend>Tech Stack</legend>
                 <label>
-                    <input type="checkbox" name="techStack"  value="React" />
+                    <input type="checkbox" name="techStack" value="React" />
                     React
                 </label>
                 <label >
@@ -109,6 +117,7 @@ const AddProject: React.FC<IProps> = ({ submit }): JSX.Element => {
                 <legend>Preview</legend>
                 <input type="file" />
             </fieldset>
+            <button type="submit">Add New Project</button>
         </form>
     </div>);
 }
