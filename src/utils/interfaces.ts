@@ -21,6 +21,7 @@ export interface IBurgerMenuProps {
 export type Data = { email: String; password: String };
 
 export type Project = {
+  _id?: string,
   techStack: String[];
   title: string;
   task: string;

@@ -18,6 +18,18 @@ export const getAll = async (): Promise<AxiosResponse<any>> => {
   }
 };
 
+export const getProjectDetail = async (title: String): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await instance.get<any>(`/projects/${title}`);
+
+    return response;
+  } catch (error: any) {
+    console.log(error);
+
+    return error;
+  }
+};
+
 export const addProject = async (data: {}, token:string) => {
     try {
         const response = await instance.post("/projects", data, {

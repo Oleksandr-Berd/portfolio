@@ -12,6 +12,7 @@ import { Project } from './utils/interfaces';
 import { addProject, updateCover } from './utils/services';
 import { useAuth } from './hooks';
 import AddImages from './pages/Admin/AddImages';
+import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 
 const App: React.FC = (): JSX.Element => {
 
@@ -45,7 +46,7 @@ const App: React.FC = (): JSX.Element => {
           <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
             <Route path='images' element={<AddImages submit={submitCoverImage} /> } />
           </Route>
-          
+          <Route path='/:title' element={<ProjectDetails/> } />
         </Route>
 
       </Routes>
