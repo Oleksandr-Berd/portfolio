@@ -12,7 +12,7 @@ const ProjectItem: React.FC<Partial<Project>> = (args): JSX.Element => {
         <SC.ContentContainer>
             <SC.Title>{title}</SC.Title>
             <SC.Text>{task}</SC.Text>
-            <SC.LinkButton to={`/${title}`} target="_blank" rel="noopener noreferrer">view project</SC.LinkButton>
+            <SC.LinkButton to={`/${title}`}>view project</SC.LinkButton>
         </SC.ContentContainer>
     </SC.ItemStyled> );
 }
