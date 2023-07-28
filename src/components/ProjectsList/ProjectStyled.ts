@@ -1,3 +1,4 @@
+import { Accordion } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components"
 
@@ -26,12 +27,6 @@ export const Title = styled.h3`
   line-height: 1.05;
 `;
 
-export const Text = styled.p`
-  margin-bottom: ${(props) => props.theme.space[6]};
-  font-size: ${(props) => props.theme.size.N};
-  line-height: 2;
-`;
-
 export const LinkButton = styled(NavLink)`
 display: inline-block;
 
@@ -50,5 +45,56 @@ display: inline-block;
 export const ItemStyled = styled.li`
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[13]};
+  }
+`;
+
+//Accordion
+
+export const AccordionStyled = styled(Accordion)`
+position: relative;
+
+  &&& button {
+    background-color: transparent;
+    border: none;
+  }
+
+  &&& button::after {
+position: absolute;
+bottom: 0;
+left: 0;
+
+transform: translateX(20px);
+
+width:${props => props.theme.percentage[10]};
+
+   content: "Read more...";
+
+   font-style: italic;
+   font-weight: ${props =>props.theme.weight.bold};
+   background: none;
+  }
+`;
+
+export const AccordionItem = styled(Accordion.Item)`
+  &&& {
+    background-color: transparent;
+    border: none;
+  }
+`;
+
+export const Text = styled(Accordion.Body)`
+  margin-bottom: ${(props) => props.theme.space[6]};
+  font-size: ${(props) => props.theme.size.N};
+  line-height: 2;
+`;
+
+export const AccordionHeader = styled(Accordion.Header)`
+  margin-bottom: ${(props) => props.theme.space[6]};
+  font-size: ${(props) => props.theme.size.N};
+  line-height: 2;
+
+  &&& {
+    background-color: transparent;
+    border: none;
   }
 `;
