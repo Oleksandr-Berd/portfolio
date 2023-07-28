@@ -17,3 +17,17 @@ export interface IBurgerMenuProps {
   handleMenu: () => void;
   isOpen?: boolean;
 }
+
+export type Data = { email: String; password: String };
+
+export type Project = {
+  _id?: string,
+  techStack: String[];
+  title: string;
+  task: string;
+  liveUrl: string;
+  coverImage?: string;
+  summary: string;
+  preview?: String[];
+  difficulty: String;
+};
