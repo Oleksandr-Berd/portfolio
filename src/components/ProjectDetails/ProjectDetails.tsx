@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import { Dna } from "react-loader-spinner";
 
 import * as SC from "./ProjectDetailsStyled"
+
+import { ReactComponent as LeftArrowSvg } from "../../assets/images/icons/arrow-left.svg"
+import { ReactComponent as RigthArrowSvg } from "../../assets/images/icons/arrow-right.svg"
+
 import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
 import ContactMe from '../ContactMe/ContactMe';
@@ -36,32 +40,6 @@ const ProjectDetails:React.FC = ():JSX.Element => {
         fetchProjectDetails()
     }, [title])
 
-
-//     let $level: string = ''
-    
-//     if (project) {
-//         switch (project.difficulty) {
-//             case "Junior":
-//                 $level = "#00FF7F"
-//                 break;
-//             case "Intermediate":
-//                 $level = "#FFD700"
-//                 break;
-//             case "Advanced":
-//                 $level = "#FFA500"
-//                 break;
-//             case "Guru":
-//                 $level = "#D2691E"
-//                 break;
-
-//         }
-// }
-
-   
-//     console.log($level);
-
-
-
     return (<div>
         {isLoading ? <Dna
             visible={true}
@@ -89,6 +67,18 @@ const ProjectDetails:React.FC = ():JSX.Element => {
                 <SC.Text style={{marginBottom:"40px"}}>{project.summary}</SC.Text>
                 <SC.SubTitle>Static Preview</SC.SubTitle>
             </SC.BackgroundContainer>
+            <SC.ButtonsContainer>
+                <SC.ButtonLeft>
+                    <LeftArrowSvg/>
+                    <SC.ButtonTitle>Fylo</SC.ButtonTitle>
+                    <SC.ButtonText>Previous Project</SC.ButtonText>
+                </SC.ButtonLeft>
+                <SC.ButtonRight>
+                    <RigthArrowSvg/>
+                    <SC.ButtonTitle>Bookmark</SC.ButtonTitle>
+                    <SC.ButtonText>Next Project</SC.ButtonText>
+                </SC.ButtonRight>
+            </SC.ButtonsContainer>
             <ContactMe/>
         </SC.ItemStyled>}
     </div>);

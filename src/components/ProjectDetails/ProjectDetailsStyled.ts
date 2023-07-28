@@ -135,3 +135,55 @@ font-weight: ${props => props.theme.weight.normal};
 line-height: 1.31;
 letter-spacing: -0.29px;
 `
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  
+
+  border-bottom: 1px solid ${(props) => props.theme.color.border};
+  border-top: 1px solid ${(props) => props.theme.color.border};
+`;
+
+export const ButtonLeft = styled.button`
+width: ${props => props.theme.percentage[6]};
+
+  padding-top: ${(props) => props.theme.space[6]};
+  padding-bottom: ${(props) => props.theme.space[6]};
+  /* padding-right: 41px; */
+
+  text-align: left;
+
+  background-color: transparent;
+  border: none;
+  border-right: 1px solid ${(props) => props.theme.color.border};
+`;
+
+export const ButtonRight = styled.button`
+  width: ${(props) => props.theme.percentage[6]};
+
+  padding-top: ${(props) => props.theme.space[6]};
+  padding-bottom: ${(props) => props.theme.space[6]};
+  /* padding-left: ${(props) => props.theme.space[6]}; */
+
+  text-align: right;
+
+  background-color: transparent;
+  border: none;
+`;
+
+export const ButtonTitle = styled.h4`
+margin-top: ${props => props.theme.space[4]};
+
+font-size: ${props => props.theme.size.M};
+line-height: 1.13;
+letter-spacing: -0.29px;
+font-weight: ${props => props.theme.weight.normal};
+`
+
+export const ButtonText = styled.p`
+font-size: ${props => props.theme.size.N};
+line-height: 1.86;
+opacity: 0.4;
+`
