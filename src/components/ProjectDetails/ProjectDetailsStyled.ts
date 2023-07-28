@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 interface IProps {
     $level: String;
-    destination?:string,
 }
 
 export const ItemStyled = styled.div`

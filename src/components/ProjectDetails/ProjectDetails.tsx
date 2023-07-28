@@ -51,16 +51,14 @@ const navigate = useNavigate()
 
     const chooseNextProject = (evt:React.MouseEvent<HTMLButtonElement>) => {
 
-        const destination = evt.currentTarget.getAttribute("destination")
         
-        navigate(`/${destination}`)
+        navigate(`/${nextProject.title}`)
     }
 
     const choosePrevProject = (evt: React.MouseEvent<HTMLButtonElement>) => {
 
-        const destination = evt.currentTarget.getAttribute("destination")
 
-        navigate(`/${destination}`)
+        navigate(`/${prevProject.title}`)
     }
 
     return (<div>
@@ -92,7 +90,7 @@ const navigate = useNavigate()
             </SC.BackgroundContainer>
             <SC.ButtonsContainer>
                 <SC.FlexButtonsContainer >
-                    <SC.ButtonLeft disabled={!prevProject} destination={prevProject ? prevProject.title : ""} onClick={choosePrevProject}>
+                    <SC.ButtonLeft disabled={!prevProject}  onClick={choosePrevProject}>
                         <LeftArrowSvg />
                         <SC.ButtonTitle>{prevProject ? prevProject.title : "This one is the first"}</SC.ButtonTitle>
                         
@@ -100,7 +98,7 @@ const navigate = useNavigate()
                     <SC.ButtonText>Previous Project</SC.ButtonText>
                 </SC.FlexButtonsContainer>
                 <SC.FlexButtonsContainer >
-                    <SC.ButtonRight disabled={!nextProject} destination={nextProject ? nextProject.title : ""} onClick={chooseNextProject}>
+                    <SC.ButtonRight disabled={!nextProject}  onClick={chooseNextProject}>
                     <RigthArrowSvg />
                     <SC.ButtonTitle>{nextProject ? nextProject.title : "No more projects yet"}</SC.ButtonTitle>
                     </SC.ButtonRight>
