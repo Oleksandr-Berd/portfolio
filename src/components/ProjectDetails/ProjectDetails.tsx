@@ -5,9 +5,10 @@ import { Dna } from "react-loader-spinner";
 import * as SC from "./ProjectDetailsStyled"
 import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
+import ContactMe from '../ContactMe/ContactMe';
 
 
-const ProjectDetails = () => {
+const ProjectDetails:React.FC = ():JSX.Element => {
     const [isLoading, setIsLoading] = useState<Boolean>(false)
     const params = useParams()
     const { title } = params
@@ -36,6 +37,29 @@ const ProjectDetails = () => {
     }, [title])
 
 
+//     let $level: string = ''
+    
+//     if (project) {
+//         switch (project.difficulty) {
+//             case "Junior":
+//                 $level = "#00FF7F"
+//                 break;
+//             case "Intermediate":
+//                 $level = "#FFD700"
+//                 break;
+//             case "Advanced":
+//                 $level = "#FFA500"
+//                 break;
+//             case "Guru":
+//                 $level = "#D2691E"
+//                 break;
+
+//         }
+// }
+
+   
+//     console.log($level);
+
 
 
     return (<div>
@@ -49,6 +73,9 @@ const ProjectDetails = () => {
         /> : null}
         {project && <SC.ItemStyled>
             <SC.ImageContainer><SC.Image src={project.coverImage} alt={project.title} /></SC.ImageContainer>
+            <SC.DifficultyContainer>
+                <SC.Difficulty $level={project.difficulty}>{project.difficulty}</SC.Difficulty>
+            </SC.DifficultyContainer>
             <SC.ContentContainer>
                 <SC.Title>{project.title}</SC.Title>
                 <SC.Text>{project.task}</SC.Text>
@@ -57,6 +84,12 @@ const ProjectDetails = () => {
                 </SC.TechStackList>
                 <SC.LinkButton to={project.liveUrl} target="_blank" rel="noopener noreferrer">visit website</SC.LinkButton>
             </SC.ContentContainer>
+            <SC.BackgroundContainer>
+                <SC.SubTitle>Project Background</SC.SubTitle>
+                <SC.Text style={{marginBottom:"40px"}}>{project.summary}</SC.Text>
+                <SC.SubTitle>Static Preview</SC.SubTitle>
+            </SC.BackgroundContainer>
+            <ContactMe/>
         </SC.ItemStyled>}
     </div>);
 }

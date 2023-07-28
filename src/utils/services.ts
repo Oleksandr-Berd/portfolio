@@ -61,3 +61,5 @@ export const updateCover = async (data: {}, title: string, token: string) => {
     return error;
   }
 };
+
+
