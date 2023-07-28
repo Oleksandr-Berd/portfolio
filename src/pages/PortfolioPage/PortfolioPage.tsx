@@ -1,33 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import { getAll } from "../../utils/services";
 import { Dna } from "react-loader-spinner";
 import { Project } from "../../utils/interfaces";
 import ProjectList from "../../components/ProjectsList/ProjectsList";
 
-const PortfolioPage: React.FC = (): JSX.Element => {
-const [isLoading, setIsLoading] = useState<Boolean>(false)
+interface IProps {
+    isLoading: Boolean,
+    projects:Project[],
+}
 
-    const fetchProjects = useRef<Project[]>([])
+const PortfolioPage: React.FC<IProps> = ({isLoading, projects}): JSX.Element => {
 
-    const getAllMovies = async () => {
-        setIsLoading(true)
-        try {
-            const result = await getAll()
-            fetchProjects.current = result.data
-        } catch (error) {
-            console.log(error);
 
-        } finally {
-            setIsLoading(false)
-        }
-
-    }
-
-    useEffect(() => {
-        getAllMovies() 
-},[])
-
-    const projects = fetchProjects.current
+   
 
     return (<div>
         {isLoading ? <Dna

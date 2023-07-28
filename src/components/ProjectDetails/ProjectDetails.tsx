@@ -11,8 +11,11 @@ import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
 import ContactMe from '../ContactMe/ContactMe';
 
+interface IProps{
+    projects: Project[],
+}
 
-const ProjectDetails:React.FC = ():JSX.Element => {
+const ProjectDetails:React.FC<IProps> = ({projects}):JSX.Element => {
     const [isLoading, setIsLoading] = useState<Boolean>(false)
     const params = useParams()
     const { title } = params
@@ -21,8 +24,15 @@ const ProjectDetails:React.FC = ():JSX.Element => {
 
     const project = fetchProjects.current ? fetchProjects.current[0] : null
 
+    const projectIndex = projects.findIndex(el => el.title === title)
 
 
+    const prevProject = projects[projectIndex - 1]
+    const nextProject = projects[projectIndex + 1] 
+    
+    console.log(prevProject);
+    
+    
     useEffect(() => {
         const fetchProjectDetails = async () => {
             setIsLoading(true)
@@ -68,12 +78,12 @@ const ProjectDetails:React.FC = ():JSX.Element => {
                 <SC.SubTitle>Static Preview</SC.SubTitle>
             </SC.BackgroundContainer>
             <SC.ButtonsContainer>
-                <SC.ButtonLeft>
+                <SC.ButtonLeft disabled={!prevProject}>
                     <LeftArrowSvg/>
                     <SC.ButtonTitle>Fylo</SC.ButtonTitle>
                     <SC.ButtonText>Previous Project</SC.ButtonText>
                 </SC.ButtonLeft>
-                <SC.ButtonRight>
+                <SC.ButtonRight disabled={!nextProject}>
                     <RigthArrowSvg/>
                     <SC.ButtonTitle>Bookmark</SC.ButtonTitle>
                     <SC.ButtonText>Next Project</SC.ButtonText>
