@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 interface IProps {
-  $level: String;
+    $level: String;
+    destination?:string,
 }
 
 export const ItemStyled = styled.div`
@@ -38,7 +39,7 @@ export const Difficulty = styled.p<IProps>`
   padding-right: ${(props) => props.theme.space[6]};
   padding-left: ${(props) => props.theme.space[6]};
 
-  color: ${(props) => props.theme.color.white};
+  color: #d3d3d3;
 
   background-color: ${(props) =>
     props.$level === "Junior"
@@ -164,24 +165,29 @@ export const FlexButtonsContainer = styled.div`
   }
 `;
 
-export const ButtonLeft = styled.button`
+export const ButtonLeft = styled.button<Partial<IProps>>`
+padding-left: 0;
   text-align: left;
 
   background-color: transparent;
   border: none;
 `;
 
-export const ButtonRight = styled.button`
+export const ButtonRight = styled.button<Partial<IProps>>`
   text-align: right;
 
   background-color: transparent;
   border: none;
+
+  &:active, &:focus{
+    border: none;
+  }
 `;
 
 export const ButtonTitle = styled.h4`
   margin-top: ${(props) => props.theme.space[4]};
 
-  font-size: ${(props) => props.theme.size.M};
+  font-size: ${(props) => props.theme.size.XXN};
   line-height: 1.13;
   letter-spacing: -0.29px;
   font-weight: ${(props) => props.theme.weight.normal};

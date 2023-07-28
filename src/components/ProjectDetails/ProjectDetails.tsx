@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Dna } from "react-loader-spinner";
 
 import * as SC from "./ProjectDetailsStyled"
@@ -19,6 +19,7 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
     const [isLoading, setIsLoading] = useState<Boolean>(false)
     const params = useParams()
     const { title } = params
+const navigate = useNavigate()
 
     const fetchProjects = useRef<Project[] | null>(null)
 
@@ -29,8 +30,6 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
 
     const prevProject = projects[projectIndex - 1]
     const nextProject = projects[projectIndex + 1]
-
-    console.log(prevProject);
 
 
     useEffect(() => {
@@ -50,10 +49,19 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
         fetchProjectDetails()
     }, [title])
 
-    //     const chooseNextProject = (evt) => {
+    const chooseNextProject = (evt:React.MouseEvent<HTMLButtonElement>) => {
 
+        const destination = evt.currentTarget.getAttribute("destination")
+        
+        navigate(`/${destination}`)
+    }
 
-    // }
+    const choosePrevProject = (evt: React.MouseEvent<HTMLButtonElement>) => {
+
+        const destination = evt.currentTarget.getAttribute("destination")
+
+        navigate(`/${destination}`)
+    }
 
     return (<div>
         {isLoading ? <Dna
@@ -83,19 +91,18 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
                 <SC.SubTitle>Static Preview</SC.SubTitle>
             </SC.BackgroundContainer>
             <SC.ButtonsContainer>
-                <SC.FlexButtonsContainer>
-                    <SC.ButtonLeft disabled={!prevProject}>
+                <SC.FlexButtonsContainer >
+                    <SC.ButtonLeft disabled={!prevProject} destination={prevProject ? prevProject.title : ""} onClick={choosePrevProject}>
                         <LeftArrowSvg />
                         <SC.ButtonTitle>{prevProject ? prevProject.title : "This one is the first"}</SC.ButtonTitle>
                         
                     </SC.ButtonLeft>
                     <SC.ButtonText>Previous Project</SC.ButtonText>
                 </SC.FlexButtonsContainer>
-                <SC.FlexButtonsContainer>
-                <SC.ButtonRight disabled={!nextProject}>
+                <SC.FlexButtonsContainer >
+                    <SC.ButtonRight disabled={!nextProject} destination={nextProject ? nextProject.title : ""} onClick={chooseNextProject}>
                     <RigthArrowSvg />
                     <SC.ButtonTitle>{nextProject ? nextProject.title : "No more projects yet"}</SC.ButtonTitle>
-                    
                     </SC.ButtonRight>
                     <SC.ButtonText>Next Project</SC.ButtonText>
                 </SC.FlexButtonsContainer>
