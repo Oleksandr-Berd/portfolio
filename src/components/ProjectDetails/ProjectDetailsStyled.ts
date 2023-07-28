@@ -38,7 +38,7 @@ export const Difficulty = styled.p<IProps>`
   padding-right: ${(props) => props.theme.space[6]};
   padding-left: ${(props) => props.theme.space[6]};
 
-color: ${props => props.theme.color.white};
+  color: ${(props) => props.theme.color.white};
 
   background-color: ${(props) =>
     props.$level === "Junior"
@@ -47,12 +47,12 @@ color: ${props => props.theme.color.white};
       ? "#FFD700"
       : props.$level === "Advanced"
       ? "#FFA500"
-                : "#D2691E"};
-      
-      font-weight: ${props => props.theme.weight.bold};
-      font-style: italic;
-      line-height: 1.5;
-      letter-spacing: 1px;
+      : "#D2691E"};
+
+  font-weight: ${(props) => props.theme.weight.bold};
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: 1px;
 
   border: 2px solid
     ${(props) =>
@@ -62,9 +62,9 @@ color: ${props => props.theme.color.white};
         ? "#FFD700"
         : props.$level === "Advanced"
         ? "#FFA500"
-                : "#D2691E"};
-        
-        border-radius: ${props => props.theme.radius[1]};
+        : "#D2691E"};
+
+  border-radius: ${(props) => props.theme.radius[1]};
 `;
 
 export const ContentContainer = styled.div`
@@ -124,49 +124,54 @@ export const TechStackItem = styled.li`
 `;
 
 export const BackgroundContainer = styled.div`
-padding-top: ${props => props.theme.space[11]};
-`
+  padding-top: ${(props) => props.theme.space[11]};
+`;
 
 export const SubTitle = styled.h4`
-margin-bottom: ${props=>props.theme.space[7]};
+  margin-bottom: ${(props) => props.theme.space[7]};
 
-font-size: ${props => props.theme.size.M};
-font-weight: ${props => props.theme.weight.normal};
-line-height: 1.31;
-letter-spacing: -0.29px;
-`
+  font-size: ${(props) => props.theme.size.M};
+  font-weight: ${(props) => props.theme.weight.normal};
+  line-height: 1.31;
+  letter-spacing: -0.29px;
+`;
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-
-  
+  align-items: stretch;
 
   border-bottom: 1px solid ${(props) => props.theme.color.border};
   border-top: 1px solid ${(props) => props.theme.color.border};
 `;
 
-export const ButtonLeft = styled.button`
-width: ${props => props.theme.percentage[6]};
-
-  padding-top: ${(props) => props.theme.space[6]};
-  padding-bottom: ${(props) => props.theme.space[6]};
-  /* padding-right: 41px; */
-
-  text-align: left;
-
-  background-color: transparent;
-  border: none;
-  border-right: 1px solid ${(props) => props.theme.color.border};
-`;
-
-export const ButtonRight = styled.button`
+export const FlexButtonsContainer = styled.div`
   width: ${(props) => props.theme.percentage[6]};
 
   padding-top: ${(props) => props.theme.space[6]};
   padding-bottom: ${(props) => props.theme.space[6]};
-  /* padding-left: ${(props) => props.theme.space[6]}; */
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    border-right: 1px solid ${(props) => props.theme.color.border};
+    text-align: left;
+  }
+
+  &:last-child {
+    text-align: right;
+  }
+`;
+
+export const ButtonLeft = styled.button`
+  text-align: left;
+
+  background-color: transparent;
+  border: none;
+`;
+
+export const ButtonRight = styled.button`
   text-align: right;
 
   background-color: transparent;
@@ -174,16 +179,16 @@ export const ButtonRight = styled.button`
 `;
 
 export const ButtonTitle = styled.h4`
-margin-top: ${props => props.theme.space[4]};
+  margin-top: ${(props) => props.theme.space[4]};
 
-font-size: ${props => props.theme.size.M};
-line-height: 1.13;
-letter-spacing: -0.29px;
-font-weight: ${props => props.theme.weight.normal};
-`
+  font-size: ${(props) => props.theme.size.M};
+  line-height: 1.13;
+  letter-spacing: -0.29px;
+  font-weight: ${(props) => props.theme.weight.normal};
+`;
 
 export const ButtonText = styled.p`
-font-size: ${props => props.theme.size.N};
-line-height: 1.86;
-opacity: 0.4;
-`
+  font-size: ${(props) => props.theme.size.N};
+  line-height: 1.86;
+  opacity: 0.4;
+`;

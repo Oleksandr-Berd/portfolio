@@ -11,11 +11,11 @@ import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
 import ContactMe from '../ContactMe/ContactMe';
 
-interface IProps{
+interface IProps {
     projects: Project[],
 }
 
-const ProjectDetails:React.FC<IProps> = ({projects}):JSX.Element => {
+const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
     const [isLoading, setIsLoading] = useState<Boolean>(false)
     const params = useParams()
     const { title } = params
@@ -28,11 +28,11 @@ const ProjectDetails:React.FC<IProps> = ({projects}):JSX.Element => {
 
 
     const prevProject = projects[projectIndex - 1]
-    const nextProject = projects[projectIndex + 1] 
-    
+    const nextProject = projects[projectIndex + 1]
+
     console.log(prevProject);
-    
-    
+
+
     useEffect(() => {
         const fetchProjectDetails = async () => {
             setIsLoading(true)
@@ -49,6 +49,11 @@ const ProjectDetails:React.FC<IProps> = ({projects}):JSX.Element => {
         }
         fetchProjectDetails()
     }, [title])
+
+    //     const chooseNextProject = (evt) => {
+
+
+    // }
 
     return (<div>
         {isLoading ? <Dna
@@ -74,22 +79,28 @@ const ProjectDetails:React.FC<IProps> = ({projects}):JSX.Element => {
             </SC.ContentContainer>
             <SC.BackgroundContainer>
                 <SC.SubTitle>Project Background</SC.SubTitle>
-                <SC.Text style={{marginBottom:"40px"}}>{project.summary}</SC.Text>
+                <SC.Text style={{ marginBottom: "40px" }}>{project.summary}</SC.Text>
                 <SC.SubTitle>Static Preview</SC.SubTitle>
             </SC.BackgroundContainer>
             <SC.ButtonsContainer>
-                <SC.ButtonLeft disabled={!prevProject}>
-                    <LeftArrowSvg/>
-                    <SC.ButtonTitle>Fylo</SC.ButtonTitle>
+                <SC.FlexButtonsContainer>
+                    <SC.ButtonLeft disabled={!prevProject}>
+                        <LeftArrowSvg />
+                        <SC.ButtonTitle>{prevProject ? prevProject.title : "This one is the first"}</SC.ButtonTitle>
+                        
+                    </SC.ButtonLeft>
                     <SC.ButtonText>Previous Project</SC.ButtonText>
-                </SC.ButtonLeft>
+                </SC.FlexButtonsContainer>
+                <SC.FlexButtonsContainer>
                 <SC.ButtonRight disabled={!nextProject}>
-                    <RigthArrowSvg/>
-                    <SC.ButtonTitle>Bookmark</SC.ButtonTitle>
+                    <RigthArrowSvg />
+                    <SC.ButtonTitle>{nextProject ? nextProject.title : "No more projects yet"}</SC.ButtonTitle>
+                    
+                    </SC.ButtonRight>
                     <SC.ButtonText>Next Project</SC.ButtonText>
-                </SC.ButtonRight>
+                </SC.FlexButtonsContainer>
             </SC.ButtonsContainer>
-            <ContactMe/>
+            <ContactMe />
         </SC.ItemStyled>}
     </div>);
 }
