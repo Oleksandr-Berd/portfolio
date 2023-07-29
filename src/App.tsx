@@ -22,10 +22,10 @@ const [projects, setProjects] = useState<Project[]>([])
 
   const dispatch = useDispatch()
 
-  const getAllProjects = async (difficulty:string) => {
+  const getAllProjects = async (difficulty:string, tech: string) => {
     setIsLoading(true)
     try {
-      const result = await getAll(difficulty)
+      const result = await getAll(difficulty, tech)
       setProjects(result.data) 
     } catch (error) {
       console.log(error);

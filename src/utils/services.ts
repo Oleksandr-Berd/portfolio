@@ -6,9 +6,9 @@ const instance = axios.create({
     baseURL: "http://localhost:5002/api/portfolio",
 });
 
-export const getAll = async (difficulty:string): Promise<AxiosResponse<any>> => {
+export const getAll = async (difficulty:string, tech:string): Promise<AxiosResponse<any>> => {
   try {
-    const response = await instance.get<any>(`/projects?difficulty=${difficulty}`);
+    const response = await instance.get<any>(`/projects?difficulty=${difficulty}&tech=${tech}`);
 
     return response;
   } catch (error: any) {

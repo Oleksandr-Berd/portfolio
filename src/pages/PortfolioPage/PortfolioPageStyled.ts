@@ -12,11 +12,14 @@ export const DropdownToggle = styled(Dropdown.Toggle)`
   color: ${(props) => props.theme.color.semiDark};
   font-family: ${(props) => props.theme.fontFamily.body};
 
+  border-color: ${(props) => props.theme.color.border};
+
   &&&:active,
   &&&:focus,
   &&&:hover {
     background: transparent;
-    color: ${(props) => props.theme.color.semiDark};    
+    color: ${(props) => props.theme.color.semiDark};
+    border-color: ${(props) => props.theme.color.border};
   }
 `;
 

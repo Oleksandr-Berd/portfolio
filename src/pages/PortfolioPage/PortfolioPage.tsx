@@ -1,6 +1,6 @@
 import { Dna } from "react-loader-spinner";
 import { Dropdown } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import * as SC from "./PortfolioPageStyled"
 
@@ -11,11 +11,12 @@ import ProjectList from "../../components/ProjectsList/ProjectsList";
 interface IProps {
     isLoading: Boolean,
     projects: Project[],
-    fetchProjects: (difficulty: string) => void
+    fetchProjects: (difficulty: string, tech:string) => void
 }
 
 const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects }): JSX.Element => {
     const [difficulty, setDifficulty] = useState<string>("Get All")
+    const [tech, setTech] = useState<string>("")
 
     const handleDifficultyChange = (eventKey: string | null): void => {
 
@@ -24,8 +25,21 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects })
         }
     }
 
+    const handleTechChange = (evt: ChangeEvent<HTMLInputElement>) => {
+       
+
+        if (evt.target.value.length >= 2) {
+            setTimeout(() => {
+                const searchedTech = evt.target.value.trim().toLowerCase()
+                setTech(searchedTech)
+            }, 1000)
+           
+        }
+    
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { fetchProjects(difficulty) }, [difficulty])
+    useEffect(() => { fetchProjects(difficulty, tech) }, [difficulty, tech])
 
     return (<div>
         {isLoading ? <Dna
@@ -53,7 +67,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects })
 
         <SC.DropDownContainer>
             <label htmlFor="tech">Search By Technology</label>
-            <input type="text" name="tech" placeholder="type interested technology..." />
+            <input type="text" name="tech" placeholder="type interested technology..." onChange={handleTechChange}/>
         </SC.DropDownContainer>
 
         {projects ? (<ProjectList projects={projects} />) : <Dna
