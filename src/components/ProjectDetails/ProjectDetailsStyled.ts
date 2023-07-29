@@ -38,7 +38,7 @@ export const Difficulty = styled.p<IProps>`
   padding-right: ${(props) => props.theme.space[6]};
   padding-left: ${(props) => props.theme.space[6]};
 
-  color: ${props => props.theme.color.white};
+  color: ${(props) => props.theme.color.secondaryBody};
 
   background-color: ${(props) =>
     props.$level === "Junior"

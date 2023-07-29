@@ -8,13 +8,12 @@ export const Item = styled.li`
 `;
 
 export const ItemLink = styled(NavLink)`
-
   text-decoration: none;
   text-transform: uppercase;
   font-weight: ${(props) => props.theme.weight.normal};
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.secondaryBody};
   font-family: ${(props) => props.theme.fontFamily.body};
-  font-size: ${props => props.theme.size.XS};
+  font-size: ${(props) => props.theme.size.XS};
   letter-spacing: 2px;
 `;
 

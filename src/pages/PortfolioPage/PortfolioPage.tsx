@@ -1,27 +1,32 @@
 import { Dna } from "react-loader-spinner";
-import { Project } from "../../utils/interfaces";
-import ProjectList from "../../components/ProjectsList/ProjectsList";
 import { Dropdown } from "react-bootstrap";
 import { useEffect, useState } from "react";
+
+import * as SC from "./PortfolioPageStyled"
+
+import { Project } from "../../utils/interfaces";
+import ProjectList from "../../components/ProjectsList/ProjectsList";
+
 
 interface IProps {
     isLoading: Boolean,
     projects: Project[],
-    fetchProjects: (difficulty:string)=>void
+    fetchProjects: (difficulty: string) => void
 }
 
 const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects }): JSX.Element => {
     const [difficulty, setDifficulty] = useState<string>("Get All")
 
-    const handleDifficultyChange = (eventKey: string | null):void => {
-        
+    const handleDifficultyChange = (eventKey: string | null): void => {
+
         if (eventKey) {
             setDifficulty(eventKey)
         }
-  } 
+    }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { fetchProjects(difficulty) }, [difficulty])
-    
+
     return (<div>
         {isLoading ? <Dna
             visible={true}
@@ -31,21 +36,26 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects })
             wrapperStyle={{}}
             wrapperClass="dna-wrapper"
         /> : null}
-        <form>
+        <SC.DropDownContainer>
             <Dropdown onSelect={handleDifficultyChange}>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Choose the project's difficulty
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu >
-                <Dropdown.Item name="Get All" eventKey="Get All">Get All</Dropdown.Item>
-                <Dropdown.Item eventKey="junior">Junior</Dropdown.Item>
-                <Dropdown.Item eventKey="intermediate">Intermediate</Dropdown.Item>
-                <Dropdown.Item eventKey="advanced">Advanced</Dropdown.Item>
-                <Dropdown.Item eventKey="guru">Guru</Dropdown.Item>
-            </Dropdown.Menu>
+                <SC.DropdownToggle variant="success" id="dropdown-basic">
+                    Choose the project's difficulty
+                </SC.DropdownToggle>
+                <SC.DropdownMenu >
+                    <SC.DropdownItem name="Get All" eventKey="Get All">Get All</SC.DropdownItem>
+                    <SC.DropdownItem eventKey="junior">Junior</SC.DropdownItem>
+                    <SC.DropdownItem eventKey="intermediate">Intermediate</SC.DropdownItem>
+                    <SC.DropdownItem eventKey="advanced">Advanced</SC.DropdownItem>
+                    <SC.DropdownItem eventKey="guru">Guru</SC.DropdownItem>
+                </SC.DropdownMenu>
             </Dropdown>
-        </form>
+        </SC.DropDownContainer>
+
+        <SC.DropDownContainer>
+            <label htmlFor="tech">Search By Technology</label>
+            <input type="text" name="tech" placeholder="type interested technology..." />
+        </SC.DropDownContainer>
+
         {projects ? (<ProjectList projects={projects} />) : <Dna
             visible={true}
             height="80"
@@ -54,7 +64,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects })
             wrapperStyle={{}}
             wrapperClass="dna-wrapper"
         />}
-    </div> );
+    </div>);
 }
- 
+
 export default PortfolioPage;
