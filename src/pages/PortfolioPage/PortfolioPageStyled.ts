@@ -1,5 +1,7 @@
 import { Dropdown } from "react-bootstrap"
 import styled from "styled-components"
+import { GrTechnology } from "react-icons/gr";
+
 
 export const DropDownContainer = styled.form`
 margin-bottom: ${props => props.theme.space[6]};
@@ -52,19 +54,27 @@ display: inline-block;
 `;
 
 export const FilterInputContainer = styled.div`
+position: relative;
 `;
 
 export const SearchFilterInput = styled.input`
-  width: ${(props) => props.theme.percentage[9]};
+  width: ${(props) => props.theme.percentage[10]};
 
   padding-top: ${(props) => props.theme.space[2]};
   padding-bottom: ${(props) => props.theme.space[2]};
-  padding-left: ${(props) => props.theme.space[6]};
+  padding-left: ${(props) => props.theme.space[7]};
 
   font-size: ${(props) => props.theme.size.N};
 
   border-radius: ${props => props.theme.radius[1]};
 `;
 
+export const SearchIcon = styled(GrTechnology)`
+position: absolute;
+bottom:0;
+left: 0;
 
+transform: translateY(-90%) translateX(70%);
+
+`
 
