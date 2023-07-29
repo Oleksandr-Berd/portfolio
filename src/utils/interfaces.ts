@@ -28,6 +28,6 @@ export type Project = {
   liveUrl: string;
   coverImage?: string;
   summary: string;
-  preview?: String[];
+  preview?: string[];
   difficulty: String;
 };

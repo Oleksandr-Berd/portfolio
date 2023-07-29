@@ -10,6 +10,7 @@ import { ReactComponent as RigthArrowSvg } from "../../assets/images/icons/arrow
 import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
 import ContactMe from '../ContactMe/ContactMe';
+import Preview from "./Preview";
 
 interface IProps {
     projects: Project[],
@@ -87,6 +88,7 @@ const navigate = useNavigate()
                 <SC.SubTitle>Project Background</SC.SubTitle>
                 <SC.Text style={{ marginBottom: "40px" }}>{project.summary}</SC.Text>
                 <SC.SubTitle>Static Preview</SC.SubTitle>
+                <Preview previews={project.preview} />
             </SC.BackgroundContainer>
             <SC.ButtonsContainer>
                 <SC.FlexButtonsContainer >

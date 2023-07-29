@@ -197,3 +197,24 @@ export const ButtonText = styled.p`
   line-height: 1.86;
   opacity: 0.4;
 `;
+
+
+//Preview
+
+export const PreviewsList = styled.ul`
+  padding-top: ${(props) => props.theme.space[3]};
+
+  margin-bottom: 64px;
+`;
+
+export const PreviewItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: ${(props) => props.theme.space[8]};
+  }
+`;
+
+export const PreviewImage = styled.img`
+width: ${props => props.theme.percentage[10]};
+
+
+`
