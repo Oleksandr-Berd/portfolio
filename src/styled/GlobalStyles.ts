@@ -14,7 +14,7 @@ h1, h2, h3, h4 , h5 ,h6{
   font-family: ${(props) => props.theme.fontFamily.heading};
 }
 
-span, p, a, address{
+span, p, a, address, label, input{
   margin: 0;
   font-family: ${(props) => props.theme.fontFamily.body};
 }

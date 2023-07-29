@@ -6,6 +6,7 @@ import * as SC from "./PortfolioPageStyled"
 
 import { Project } from "../../utils/interfaces";
 import ProjectList from "../../components/ProjectsList/ProjectsList";
+import styled from 'styled-components';
 
 
 interface IProps {
@@ -65,9 +66,11 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects })
             </Dropdown>
         </SC.DropDownContainer>
 
-        <SC.DropDownContainer>
-            <label htmlFor="tech">Search By Technology</label>
-            <input type="text" name="tech" placeholder="type interested technology..." onChange={handleTechChange}/>
+        <SC.DropDownContainer>  
+            <SC.FilterInputContainer>
+                <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
+                <SC.SearchFilterInput type="text" name="tech" id="tech" placeholder="type interested technology..." onChange={handleTechChange} />
+            </SC.FilterInputContainer>
         </SC.DropDownContainer>
 
         {projects ? (<ProjectList projects={projects} />) : <Dna
