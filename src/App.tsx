@@ -1,24 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, useEffect, useRef, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import HomePage from './pages/HomePage/HomePage';
-import PortfolioPage from './pages/PortfolioPage/PortfolioPage';
-import ContactPage from './pages/ContactPage/ContactPage';
-import AdminPage from './pages/Admin/AdminPage';
-import AddProject from './pages/Admin/AddProject';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from './redux/auth/operations';
 import { Project, IFetchProjects } from './utils/interfaces';
 import { addProject, getAll, updateCover } from './utils/services';
 import { useAuth } from './hooks';
-import AddImages from './pages/Admin/AddImages';
-import ProjectDetails from './components/ProjectDetails/ProjectDetails';
+
+
+const ProjectDetails = lazy(() => import('./components/ProjectDetails/ProjectDetails'))
+const ContactPage = lazy(() => import('./pages/ContactPage/ContactPage'))
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage/PortfolioPage'))
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
+const AddImages = lazy(() => import('./pages/Admin/AddImages'))
+const AddProject = lazy(() => import('./pages/Admin/AddProject'))
+const AdminPage = lazy(() => import('./pages/Admin/AdminPage'))
 
 const App: React.FC = (): JSX.Element => {
   const[isLoading, setIsLoading] = useState<Boolean>(false)
   const [projects, setProjects] = useState<Project[]>([])
   const [totalPages, setTotalPages] = useState<number>(0)
   const projectBase = useRef(null)
+  const [error, setError] = useState<any>(null)
 
   const { token } = useAuth()
 
@@ -39,7 +42,7 @@ const App: React.FC = (): JSX.Element => {
      
       setTotalPages(result.data.totalPages)
     } catch (error) {
-      console.log(error);
+     setError(error)
 
     } finally {
       setIsLoading(false)
@@ -54,7 +57,7 @@ const App: React.FC = (): JSX.Element => {
 
         projectBase.current = result.data.result
       } catch (error) {
-        console.log(error);
+        setError(error)
 
       } finally {
         setIsLoading(false)
@@ -83,19 +86,20 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <div className="App">
-      <Routes>
+      {error ? <h1>{error}</h1>  : <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           <Route path="portfolio" element={<PortfolioPage isLoading={isLoading} projects={projects} fetchProjects={getAllProjects} totalPages={totalPages} />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="admin" element={<AdminPage />} />
           <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
-            <Route path='images' element={<AddImages submit={submitCoverImage} /> } />
+            <Route path='images' element={<AddImages submit={submitCoverImage} />} />
           </Route>
-          <Route path='/:title' element={<ProjectDetails projects={projectBase.current} /> } />
+          <Route path='/:title' element={<ProjectDetails projects={projectBase.current} />} />
         </Route>
 
-      </Routes>
+      </Routes>}
+      
     </div>
   );
 }
