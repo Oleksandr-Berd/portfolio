@@ -29,7 +29,6 @@ const App: React.FC = (): JSX.Element => {
     setIsLoading(true)
     try {
       const result = await getAll({ difficulty, tech, currentPage })
-      console.log({ difficulty, tech, currentPage })
       
       if (currentPage === 1) {
         setProjects(result.data.result)

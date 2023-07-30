@@ -11,3 +11,13 @@ export const HeaderStyled = styled.header`
   padding-right: ${(props) => props.theme.space[8]};
   padding-left: ${(props) => props.theme.space[8]};
 `;
+
+export const LogoContainer = styled.div`
+min-width: 60px;
+height: 42px;
+`
+
+export const LogoImage = styled.img`
+  width: ${(props) => props.theme.percentage[10]};
+  height: ${(props) => props.theme.percentage[10]};
+`;

@@ -15,7 +15,6 @@ export const getAll = async (args: IFetchProjects): Promise<AxiosResponse<any>> 
       `/projects?difficulty=${difficulty}&tech=${tech}&page=${currentPage}`
     );
 
-
     return response;
   } catch (error: any) {
     console.log(error);

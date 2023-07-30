@@ -37,6 +37,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
             setTimeout(() => {
                 const searchedTech = evt.target.value.trim().toLowerCase()
                 setTech(searchedTech)
+                setCurrentPage(1)
             }, 1000)
            
         }
@@ -76,10 +77,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
                 observer.current.disconnect();
             }
         };
-    }, [currentPage, totalPages, isLoading]);
-
-    console.log(projects);
-    
+    }, [currentPage, totalPages, isLoading]);    
 
     return (<div>
         {isLoading ? <Dna
@@ -95,6 +93,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
                 <SC.DropdownToggle variant="success" id="dropdown-basic">
                     Choose the project's difficulty
                 </SC.DropdownToggle>
+               
                 <SC.DropdownMenu >
                     <SC.DropdownItem name="Get All" eventKey="Get All">Get All</SC.DropdownItem>
                     <SC.DropdownItem eventKey="junior">Junior</SC.DropdownItem>
@@ -104,8 +103,8 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
                 </SC.DropdownMenu>
             </Dropdown>
         </SC.DropDownContainer>
-
-        <SC.DropDownContainer>  
+        <SC.OrTitle>or</SC.OrTitle>
+        <SC.DropDownContainer style={{marginBottom:"24px"}}>  
             <SC.FilterInputContainer>
                 <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
                 <SC.SearchIcon/>

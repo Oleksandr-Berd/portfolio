@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const CommonContainer = styled.div`
-padding-top: 115px;
+padding-top: 40px;
 padding-bottom: 80px;
 
 text-align: center;

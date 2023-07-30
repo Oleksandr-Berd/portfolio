@@ -4,7 +4,7 @@ import { GrTechnology } from "react-icons/gr";
 
 
 export const DropDownContainer = styled.form`
-margin-bottom: ${props => props.theme.space[6]};
+margin-bottom: ${props => props.theme.space[2]};
 
 text-align: center;
 `
@@ -77,4 +77,14 @@ left: 0;
 transform: translateY(-90%) translateX(70%);
 
 `
+
+export const OrTitle = styled.p`
+  margin-bottom: ${(props) => props.theme.space[2]};
+
+  text-align: center;
+
+  font-style: italic;
+  font-weight: ${props => props.theme.weight.bold};
+  font-size: ${props => props.theme.size.N};
+`;
 
