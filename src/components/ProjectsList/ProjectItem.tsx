@@ -4,14 +4,14 @@ import { Project } from "../../utils/interfaces";
 
 const ProjectItem: React.FC<Partial<Project>> = (args): JSX.Element => {
     
-    const { title, task, coverImage } = args
+    const {_id,  title, task, coverImage } = args
 
 const taskTitle = task!.split(".")[0]
 
 
     
 
-    return (<SC.ItemStyled>
+    return (<SC.ItemStyled key={_id}>
         <SC.ImageContainer><SC.Image src={coverImage} alt={title} /></SC.ImageContainer>
         <SC.ContentContainer>
             <SC.Title>{title}</SC.Title>

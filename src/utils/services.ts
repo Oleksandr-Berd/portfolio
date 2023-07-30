@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { IFetchProjects } from "./interfaces";
 
 
 
@@ -6,9 +7,14 @@ const instance = axios.create({
     baseURL: "http://localhost:5002/api/portfolio",
 });
 
-export const getAll = async (difficulty:string, tech:string): Promise<AxiosResponse<any>> => {
+export const getAll = async (args: IFetchProjects): Promise<AxiosResponse<any>> => {
+  const { difficulty, tech, currentPage } = args;
+  
   try {
-    const response = await instance.get<any>(`/projects?difficulty=${difficulty}&tech=${tech}`);
+    const response = await instance.get<any>(
+      `/projects?difficulty=${difficulty}&tech=${tech}&page=${currentPage}`
+    );
+
 
     return response;
   } catch (error: any) {
