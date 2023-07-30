@@ -88,3 +88,8 @@ export const OrTitle = styled.p`
   font-size: ${props => props.theme.size.N};
 `;
 
+export const ItemStyled = styled.div`
+  &:not(:last-child) {
+    margin-bottom: ${(props) => props.theme.space[13]};
+  }
+`;

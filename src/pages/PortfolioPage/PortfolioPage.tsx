@@ -95,7 +95,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
             </Dropdown>
         </SC.DropDownContainer>
         <SC.OrTitle>or</SC.OrTitle>
-        <SC.DropDownContainer style={{marginBottom:"24px"}}>  
+        <SC.DropDownContainer style={{marginBottom:"32px"}}>  
             <SC.FilterInputContainer>
                 <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
                 <SC.SearchIcon/>
@@ -103,12 +103,12 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
             </SC.FilterInputContainer>
         </SC.DropDownContainer>
         <ul>
-            {projects ? projects.map(({ _id, title, task, liveUrl, coverImage }, index, array) => (<div key={_id}>
+            {projects ? projects.map(({ _id, title, task, liveUrl, coverImage }, index, array) => (<SC.ItemStyled key={_id}>
                 {/* wrapped in div for pagination purposes*/}
                 <ProjectItem title={title} task={task} liveUrl={liveUrl} coverImage={coverImage}/>
                 {index === array.length - 1 && <div key={title} ref={lastItemRef} />}
 
-            </div>
+            </SC.ItemStyled>
                 
             )) : <Dna
                 visible={true}
