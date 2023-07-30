@@ -17,9 +17,7 @@ export const getAll = async (args: IFetchProjects): Promise<AxiosResponse<any>> 
 
     return response;
   } catch (error: any) {
-    console.log(error);
-
-    return error;
+    return error.response;
   }
 };
 
@@ -29,9 +27,8 @@ export const getProjectDetail = async (title: String): Promise<AxiosResponse<any
 
     return response;
   } catch (error: any) {
-    console.log(error);
 
-    return error;
+    return error.response;
   }
 };
 
@@ -45,9 +42,8 @@ export const addProject = async (data: {}, token:string) => {
         
         return response
     } catch (error) {
-        console.log(error);
         
-        return error
+        return error.response;
     }
 }
 
@@ -61,9 +57,8 @@ export const updateCover = async (data: {}, title: string, token: string) => {
 
     return response;
   } catch (error) {
-    console.log(error);
 
-    return error;
+    return error.response;
   }
 };
 

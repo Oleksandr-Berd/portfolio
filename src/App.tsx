@@ -6,6 +6,7 @@ import { refreshUser } from './redux/auth/operations';
 import { Project, IFetchProjects } from './utils/interfaces';
 import { addProject, getAll, updateCover } from './utils/services';
 import { useAuth } from './hooks';
+import { AxiosResponse } from 'axios';
 
 
 const ProjectDetails = lazy(() => import('./components/ProjectDetails/ProjectDetails'))
@@ -17,7 +18,7 @@ const AddProject = lazy(() => import('./pages/Admin/AddProject'))
 const AdminPage = lazy(() => import('./pages/Admin/AdminPage'))
 
 const App: React.FC = (): JSX.Element => {
-  const[isLoading, setIsLoading] = useState<Boolean>(false)
+  const [isLoading, setIsLoading] = useState<Boolean>(false)
   const [projects, setProjects] = useState<Project[]>([])
   const [totalPages, setTotalPages] = useState<number>(0)
   const projectBase = useRef(null)
@@ -31,44 +32,39 @@ const App: React.FC = (): JSX.Element => {
     const { difficulty, tech, currentPage } = args;
 
     setIsLoading(true)
-    try {
-      const result = await getAll({ difficulty, tech, currentPage, limit:3 })
-      
-      if (currentPage === 1) {
-        setProjects(result.data.result)
-      } else {
-        setProjects(prev => [...prev, ...result.data.result])
-      }
-     
-      setTotalPages(result.data.totalPages)
-    } catch (error) {
-     setError(error)
 
-    } finally {
-      setIsLoading(false)
+    const result = await getAll({ difficulty, tech, currentPage, limit: 3 })
+
+    if (result.data.message) setError(result.data.message)
+
+    if (currentPage === 1) {
+      setProjects(result.data.result)
+    } else {
+      setProjects(prev => [...prev, ...result.data.result])
     }
 
+    setTotalPages(result.data.totalPages)
+
+    setIsLoading(false)
   }
 
   useEffect(() => {
     const getBaseProjects = async () => {
-      try {
-        const result = await getAll({ difficulty: "Get All", tech: "", currentPage: 1, limit: 10 })
 
-        projectBase.current = result.data.result
-      } catch (error) {
-        setError(error)
+      const result = await getAll({ difficulty: "Get All", tech: "", currentPage: 1, limit: 10 })
 
-      } finally {
-        setIsLoading(false)
-      }
+      if (result.data.message) setError(result.data.message)
 
+
+      projectBase.current = result.data.result
+
+      setIsLoading(false)
     }
 
     getBaseProjects()
   }, [])
 
-  
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -86,7 +82,7 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <div className="App">
-      {error ? <h1>{error}</h1>  : <Routes>
+      {error ? <h1>{error}</h1> : <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           <Route path="portfolio" element={<PortfolioPage isLoading={isLoading} projects={projects} fetchProjects={getAllProjects} totalPages={totalPages} />} />
@@ -99,7 +95,7 @@ const App: React.FC = (): JSX.Element => {
         </Route>
 
       </Routes>}
-      
+
     </div>
   );
 }

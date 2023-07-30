@@ -11,6 +11,7 @@ import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
 import ContactMe from '../ContactMe/ContactMe';
 import Preview from "./Preview";
+import { H1 } from "@blueprintjs/core";
 
 interface IProps {
     projects: Project[] | null,
@@ -18,12 +19,13 @@ interface IProps {
 
 const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
     const [isLoading, setIsLoading] = useState<Boolean>(false)
+    const [error, setError] = useState<any>(null)
     const params = useParams()
     const { title } = params
-const navigate = useNavigate()
+    const navigate = useNavigate()
 
-    
-    
+
+
     const fetchProjects = useRef<Project[] | null>(null)
 
     const project = fetchProjects.current ? fetchProjects.current[0] : null
@@ -37,23 +39,20 @@ const navigate = useNavigate()
     useEffect(() => {
         const fetchProjectDetails = async () => {
             setIsLoading(true)
-            try {
-                const result = await getProjectDetail(title!)
-                fetchProjects.current = result.data
-            } catch (error) {
-                console.log(error);
 
-            } finally {
-                setIsLoading(false)
-            }
+            const result = await getProjectDetail(title!)
 
+            if (result.data.message) setError(result.data.message)
+
+            fetchProjects.current = result.data
+            setIsLoading(false)
         }
         fetchProjectDetails()
     }, [title])
 
-    const chooseNextProject = (evt:React.MouseEvent<HTMLButtonElement>) => {
+    const chooseNextProject = (evt: React.MouseEvent<HTMLButtonElement>) => {
 
-        
+
         navigate(`/${nextProject.title}`)
     }
 
@@ -72,6 +71,7 @@ const navigate = useNavigate()
             wrapperStyle={{}}
             wrapperClass="dna-wrapper"
         /> : null}
+        {error ? <h1>{error}</h1> : null}
         {project && <SC.ItemStyled>
             <SC.ImageContainer><SC.Image src={project.coverImage} alt={project.title} /></SC.ImageContainer>
             <SC.DifficultyContainer>
@@ -93,17 +93,17 @@ const navigate = useNavigate()
             </SC.BackgroundContainer>
             <SC.ButtonsContainer>
                 <SC.FlexButtonsContainer >
-                    <SC.ButtonLeft disabled={!prevProject}  onClick={choosePrevProject}>
+                    <SC.ButtonLeft disabled={!prevProject} onClick={choosePrevProject}>
                         <LeftArrowSvg />
                         <SC.ButtonTitle>{prevProject ? prevProject.title : "This one is the first"}</SC.ButtonTitle>
-                        
+
                     </SC.ButtonLeft>
                     <SC.ButtonText>Previous Project</SC.ButtonText>
                 </SC.FlexButtonsContainer>
                 <SC.FlexButtonsContainer >
-                    <SC.ButtonRight disabled={!nextProject}  onClick={chooseNextProject}>
-                    <RigthArrowSvg />
-                    <SC.ButtonTitle>{nextProject ? nextProject.title : "No more projects yet"}</SC.ButtonTitle>
+                    <SC.ButtonRight disabled={!nextProject} onClick={chooseNextProject}>
+                        <RigthArrowSvg />
+                        <SC.ButtonTitle>{nextProject ? nextProject.title : "No more projects yet"}</SC.ButtonTitle>
                     </SC.ButtonRight>
                     <SC.ButtonText>Next Project</SC.ButtonText>
                 </SC.FlexButtonsContainer>
