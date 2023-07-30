@@ -28,8 +28,15 @@ const App: React.FC = (): JSX.Element => {
 
     setIsLoading(true)
     try {
-      const result = await getAll({difficulty, tech, currentPage})
-      setProjects(prev => [...prev, ...result.data.result])
+      const result = await getAll({ difficulty, tech, currentPage })
+      console.log({ difficulty, tech, currentPage })
+      
+      if (currentPage === 1) {
+        setProjects(result.data.result)
+      } else {
+        setProjects(prev => [...prev, ...result.data.result])
+      }
+     
       setTotalPages(result.data.totalPages)
     } catch (error) {
       console.log(error);

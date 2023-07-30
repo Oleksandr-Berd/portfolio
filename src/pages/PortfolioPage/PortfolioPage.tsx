@@ -26,6 +26,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
 
         if (eventKey) {
             setDifficulty(eventKey)
+            setCurrentPage(1)
         }
     }
 
@@ -55,7 +56,6 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
         const handleObserver = async (entries): Promise<void> => {
             const target = entries[0];
             if (target.isIntersecting && currentPage < totalPages) {
-                // Additional check to prevent rapid updates
                 if (!isLoading) {
                     setCurrentPage((prevPage) => prevPage + 1);
                 }
@@ -78,8 +78,8 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
         };
     }, [currentPage, totalPages, isLoading]);
 
-console.log(projects);
-
+    console.log(projects);
+    
 
     return (<div>
         {isLoading ? <Dna
@@ -113,8 +113,9 @@ console.log(projects);
             </SC.FilterInputContainer>
         </SC.DropDownContainer>
         <ul>
-            {projects ? projects.map(({ _id, title, task, liveUrl, coverImage }, index, array) => (<div key={_id} >
-                <ProjectItem _id={_id} title={title} task={task} liveUrl={liveUrl} coverImage={coverImage}/>
+            {projects ? projects.map(({ _id, title, task, liveUrl, coverImage }, index, array) => (<div key={_id}>
+                {/* wrapped in div for pagination purposes*/}
+                <ProjectItem title={title} task={task} liveUrl={liveUrl} coverImage={coverImage}/>
                 {index === array.length - 1 && <div key={title} ref={lastItemRef} />}
 
             </div>
