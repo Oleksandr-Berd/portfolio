@@ -26,7 +26,7 @@ export const MenuStyled = styled(Menu)`
   text-transform: uppercase;
   text-align: center;
   background-color: ${(props) => props.theme.color.mainText};
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.secondaryBody};
   font-size: ${(props) => props.theme.size.XS};
   letter-spacing: 2px;
 

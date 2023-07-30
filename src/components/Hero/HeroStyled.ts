@@ -34,7 +34,7 @@ export const ButtonLink = styled.a`
 
   font-size: ${(props) => props.theme.size.XXS};
   background-color: ${(props) => props.theme.color.dark};
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.secondaryBody};
 `;
 
 

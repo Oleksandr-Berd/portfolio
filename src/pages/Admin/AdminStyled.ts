@@ -44,7 +44,6 @@ export const InputStyled = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-
   padding-top: 17px;
   padding-bottom: 17px;
   padding-left: ${(props) => props.theme.space[9]};
@@ -52,7 +51,7 @@ export const SubmitButton = styled.button`
 
   text-transform: uppercase;
   font-size: ${(props) => props.theme.size.XS};
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.secondaryBody};
   background-color: ${(props) => props.theme.color.dark};
   letter-spacing: 2px;
 `;

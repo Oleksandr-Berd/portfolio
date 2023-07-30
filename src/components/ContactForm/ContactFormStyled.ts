@@ -63,7 +63,7 @@ export const SubmitButton = styled.button`
 
   text-transform: uppercase;
   font-size: ${(props) => props.theme.size.XS};
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.secondaryBody};
   background-color: ${(props) => props.theme.color.dark};
   letter-spacing: 2px;
 `;

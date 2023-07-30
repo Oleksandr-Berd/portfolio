@@ -77,8 +77,8 @@ const theme: object = {
     dark: "#203A4C",
     mainText: "#33323D",
     border: "#979797",
+    secondaryBody: "#ffffff",
 
-    white: "#ffffff",
     main: "#10141E",
     secondary: "#5A698F",
     semiDark: "#161D2F",

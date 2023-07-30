@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import HomePage from './pages/HomePage/HomePage';
@@ -16,17 +16,17 @@ import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 
 const App: React.FC = (): JSX.Element => {
   const[isLoading, setIsLoading] = useState<Boolean>(false)
-  const fetchProjects = useRef<Project[]>([])
+const [projects, setProjects] = useState<Project[]>([])
 
   const { token } = useAuth()
 
   const dispatch = useDispatch()
 
-  const getAllProjects = async () => {
+  const getAllProjects = async (difficulty:string, tech: string) => {
     setIsLoading(true)
     try {
-      const result = await getAll()
-      fetchProjects.current = result.data
+      const result = await getAll(difficulty, tech)
+      setProjects(result.data) 
     } catch (error) {
       console.log(error);
 
@@ -36,11 +36,6 @@ const App: React.FC = (): JSX.Element => {
 
   }
 
-  useEffect(() => {
-    getAllProjects()
-  }, [])
-
-  const projects = fetchProjects.current
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -62,7 +57,7 @@ const App: React.FC = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="portfolio" element={<PortfolioPage isLoading={isLoading} projects={projects} />} />
+          <Route path="portfolio" element={<PortfolioPage isLoading={isLoading} projects={projects} fetchProjects={getAllProjects} />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="admin" element={<AdminPage />} />
           <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
