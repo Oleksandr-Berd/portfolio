@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, ReactNode } from "react";
 
 export interface IContentProp {
     content: string;
@@ -30,4 +30,11 @@ export type Project = {
   summary: string;
   preview?: string[];
   difficulty: String;
+  children?: ReactNode;
 };
+
+export interface IFetchProjects {
+  difficulty: string;
+  tech: string;
+  currentPage: number;
+}

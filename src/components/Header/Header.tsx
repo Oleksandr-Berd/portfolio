@@ -1,6 +1,6 @@
 import * as SC from "./HeaderStyled"
 
-import { ReactComponent as LogoSVG } from "../../assets/images/logo.svg"
+import logo from "../../assets/images/we_stand_with_ukraine_banner_template_doves_hands_flat_sketch_6922728/We stand with ukraine, dove and hands.jpg"
 import HamburgerMenu from "../BurgerMenu/HamburgerMenu";
 import { useState } from "react";
 
@@ -12,7 +12,11 @@ const [isOpened, setIsOpened] = useState<boolean>(false)
         setIsOpened(!isOpened)
     }
 
-    return (<SC.HeaderStyled><LogoSVG fill="#33323D" /> <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /></SC.HeaderStyled> );
+    return (<SC.HeaderStyled>
+        <SC.LogoContainer>
+            <SC.LogoImage src={logo} alt="logo" />
+        </SC.LogoContainer>
+        <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /></SC.HeaderStyled>);
 }
  
 export default Header;
