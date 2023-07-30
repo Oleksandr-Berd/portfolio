@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import HomePage from './pages/HomePage/HomePage';
@@ -18,6 +18,7 @@ const App: React.FC = (): JSX.Element => {
   const[isLoading, setIsLoading] = useState<Boolean>(false)
   const [projects, setProjects] = useState<Project[]>([])
   const [totalPages, setTotalPages] = useState<number>(0)
+  const projectBase = useRef(null)
 
   const { token } = useAuth()
 
@@ -28,7 +29,7 @@ const App: React.FC = (): JSX.Element => {
 
     setIsLoading(true)
     try {
-      const result = await getAll({ difficulty, tech, currentPage })
+      const result = await getAll({ difficulty, tech, currentPage, limit:3 })
       
       if (currentPage === 1) {
         setProjects(result.data.result)
@@ -46,7 +47,25 @@ const App: React.FC = (): JSX.Element => {
 
   }
 
+  useEffect(() => {
+    const getBaseProjects = async () => {
+      try {
+        const result = await getAll({ difficulty: "Get All", tech: "", currentPage: 1, limit: 10 })
 
+        projectBase.current = result.data.result
+      } catch (error) {
+        console.log(error);
+
+      } finally {
+        setIsLoading(false)
+      }
+
+    }
+
+    getBaseProjects()
+  }, [])
+
+  
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -73,7 +92,7 @@ const App: React.FC = (): JSX.Element => {
           <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
             <Route path='images' element={<AddImages submit={submitCoverImage} /> } />
           </Route>
-          <Route path='/:title' element={<ProjectDetails projects={projects} /> } />
+          <Route path='/:title' element={<ProjectDetails projects={projectBase.current} /> } />
         </Route>
 
       </Routes>

@@ -8,11 +8,11 @@ const instance = axios.create({
 });
 
 export const getAll = async (args: IFetchProjects): Promise<AxiosResponse<any>> => {
-  const { difficulty, tech, currentPage } = args;
+  const { difficulty, tech, currentPage, limit } = args;
   
   try {
     const response = await instance.get<any>(
-      `/projects?difficulty=${difficulty}&tech=${tech}&page=${currentPage}`
+      `/projects?difficulty=${difficulty}&tech=${tech}&page=${currentPage}&limit=${limit}`
     );
 
     return response;

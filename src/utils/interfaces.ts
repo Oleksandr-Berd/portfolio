@@ -37,4 +37,5 @@ export interface IFetchProjects {
   difficulty: string;
   tech: string;
   currentPage: number;
+  limit?:number
 }

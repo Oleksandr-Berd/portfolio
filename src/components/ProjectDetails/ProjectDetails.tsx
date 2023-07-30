@@ -13,7 +13,7 @@ import ContactMe from '../ContactMe/ContactMe';
 import Preview from "./Preview";
 
 interface IProps {
-    projects: Project[],
+    projects: Project[] | null,
 }
 
 const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
@@ -22,16 +22,17 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
     const { title } = params
 const navigate = useNavigate()
 
+    
+    
     const fetchProjects = useRef<Project[] | null>(null)
 
     const project = fetchProjects.current ? fetchProjects.current[0] : null
 
-    const projectIndex = projects.findIndex(el => el.title === title)
+    const projectIndex = projects ? projects.findIndex(el => el.title === title) : null;
 
 
-    const prevProject = projects[projectIndex - 1]
-    const nextProject = projects[projectIndex + 1]
-
+    const prevProject = projectIndex !== null ? projects[projectIndex - 1] : null
+    const nextProject = projectIndex !== null ? projects[projectIndex + 1] : null
 
     useEffect(() => {
         const fetchProjectDetails = async () => {

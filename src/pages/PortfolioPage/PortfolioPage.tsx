@@ -20,7 +20,8 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
     const [difficulty, setDifficulty] = useState<string>("Get All")
     const [tech, setTech] = useState<string>("")
     const [currentPage, setCurrentPage] = useState<number>(1)
-
+    const observer = useRef(null);
+    const lastItemRef = useRef(null);
 
     const handleDifficultyChange = (eventKey: string | null): void => {
 
@@ -31,27 +32,17 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
     }
 
     const handleTechChange = (evt: ChangeEvent<HTMLInputElement>):void => {
-       
-
         if (evt.target.value.length >= 2) {
             setTimeout(() => {
                 const searchedTech = evt.target.value.trim().toLowerCase()
                 setTech(searchedTech)
                 setCurrentPage(1)
-            }, 1000)
-           
+            }, 1000)  
         }
-    
     }
 
-    
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { fetchProjects({ difficulty, tech, currentPage }) }, [difficulty, tech, currentPage])
-    
-    const observer = useRef(null);
-    const lastItemRef = useRef(null);
-
-    
 
     useEffect(() => {
         const handleObserver = async (entries): Promise<void> => {
