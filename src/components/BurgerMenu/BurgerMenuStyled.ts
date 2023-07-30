@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Button, Menu } from "@blueprintjs/core";
-import { Popover } from "react-bootstrap";
 
 export const MenuButton = styled(Button)`
   &&& {
