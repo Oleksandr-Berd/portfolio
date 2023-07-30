@@ -1,8 +1,7 @@
 import { MenuItem } from "@blueprintjs/core";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { IBurgerMenuProps, Project } from "../../utils/interfaces";
+import { IBurgerMenuProps } from "../../utils/interfaces";
 import { useAuth } from "../../hooks";
 import * as SC from "./BurgerMenuStyled";
 

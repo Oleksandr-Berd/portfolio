@@ -1,7 +1,6 @@
 import * as SC from "./ProjectStyled"
 
 import { Project } from "../../utils/interfaces";
-import { Accordion } from "react-bootstrap";
 
 const ProjectItem: React.FC<Partial<Project>> = (args): JSX.Element => {
     
@@ -24,7 +23,6 @@ const taskTitle = task!.split(".")[0]
                     </SC.Text>
                 </SC.AccordionItem>
             </SC.AccordionStyled>
-            {/* <SC.Text>{task}</SC.Text> */}
             <SC.LinkButton to={`/${title}`}>view project</SC.LinkButton>
         </SC.ContentContainer>
     </SC.ItemStyled> );
