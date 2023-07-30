@@ -5,13 +5,12 @@ import { Dna } from "react-loader-spinner";
 import * as SC from "./ProjectDetailsStyled"
 
 import { ReactComponent as LeftArrowSvg } from "../../assets/images/icons/arrow-left.svg"
-import { ReactComponent as RigthArrowSvg } from "../../assets/images/icons/arrow-right.svg"
+import { ReactComponent as RightArrowSvg } from "../../assets/images/icons/arrow-right.svg"
 
 import { Project } from "../../utils/interfaces";
 import { getProjectDetail } from "../../utils/services";
 import ContactMe from '../ContactMe/ContactMe';
 import Preview from "./Preview";
-import { H1 } from "@blueprintjs/core";
 
 interface IProps {
     projects: Project[] | null,
@@ -102,7 +101,7 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
                 </SC.FlexButtonsContainer>
                 <SC.FlexButtonsContainer >
                     <SC.ButtonRight disabled={!nextProject} onClick={chooseNextProject}>
-                        <RigthArrowSvg />
+                        <RightArrowSvg />
                         <SC.ButtonTitle>{nextProject ? nextProject.title : "No more projects yet"}</SC.ButtonTitle>
                     </SC.ButtonRight>
                     <SC.ButtonText>Next Project</SC.ButtonText>

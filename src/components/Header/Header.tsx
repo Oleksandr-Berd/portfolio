@@ -8,8 +8,8 @@ import { useState } from "react";
 const Header: React.FC = (): JSX.Element => {
 const [isOpened, setIsOpened] = useState<boolean>(false)
 
-    const handleMenu = () => {
-        setIsOpened(!isOpened)
+    const handleMenu = (): void => {
+            setIsOpened(!isOpened)
     }
 
     return (<SC.HeaderStyled>

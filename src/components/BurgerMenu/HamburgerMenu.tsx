@@ -9,7 +9,7 @@ import { IBurgerMenuProps } from "../../utils/interfaces";
 
 
 const HamburgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu, isOpen }): JSX.Element => {
-    return (<Popover content={<BurgerMenu handleMenu={handleMenu} />} placement="bottom" >
+    return (<Popover content={<BurgerMenu handleMenu={handleMenu} />} placement="bottom" hasBackdrop={true} interactionKind="click" onClose={handleMenu}>
         <SC.MenuButton alignText="left" icon={isOpen ? <CloseSvg /> : <BurgerSvg />} onClick={handleMenu} />
     </Popover>);
 }
