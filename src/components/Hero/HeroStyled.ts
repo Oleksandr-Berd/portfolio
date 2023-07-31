@@ -41,3 +41,7 @@ export const ButtonLink = styled.a`
 export const IconContainer = styled.div`
 margin-right: ${props => props.theme.space[11]};
 `
+
+export const ButtonText = styled.span`
+  color: "#FAFAFA";
+`;

@@ -1,13 +1,18 @@
-import React, { lazy, useEffect, useRef, useState } from 'react';
+import React, { lazy, useContext, useEffect, useRef, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from './components/SharedLayout/SharedLayout';
 import { useDispatch } from 'react-redux';
+
+import SharedLayout from './components/SharedLayout/SharedLayout';
+
 import { refreshUser } from './redux/auth/operations';
 import { Project, IFetchProjects } from './utils/interfaces';
 import { addProject, getAll, updateCover } from './utils/services';
 import { useAuth } from './hooks';
-import { AxiosResponse } from 'axios';
-
+import { GlobalStyles } from './styled/GlobalStyles';
+import lightTheme from './styled/lightTheme';
+import darkTheme from './styled/darkTheme';
+import ThemeContext from './context/themeContext';
 
 const ProjectDetails = lazy(() => import('./components/ProjectDetails/ProjectDetails'))
 const ContactPage = lazy(() => import('./pages/ContactPage/ContactPage'))
@@ -23,7 +28,10 @@ const App: React.FC = (): JSX.Element => {
   const [totalPages, setTotalPages] = useState<number>(0)
   const projectBase = useRef(null)
   const [error, setError] = useState<any>(null)
+  const {theme} = useContext(ThemeContext)
 
+  const commonTheme = theme === "light" ? lightTheme : darkTheme
+  
   const { token } = useAuth()
 
   const dispatch = useDispatch()
@@ -82,20 +90,23 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <div className="App">
-      {error ? <h1>{error}</h1> : <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="portfolio" element={<PortfolioPage isLoading={isLoading} projects={projects} fetchProjects={getAllProjects} totalPages={totalPages} />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="admin" element={<AdminPage />} />
-          <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
-            <Route path='images' element={<AddImages submit={submitCoverImage} />} />
+      
+      <ThemeProvider theme={commonTheme}>
+        <GlobalStyles />
+        {error ? <h1>{error}</h1> : <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="portfolio" element={<PortfolioPage isLoading={isLoading} projects={projects} fetchProjects={getAllProjects} totalPages={totalPages} />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="admin" element={<AdminPage />} />
+            <Route path='admin/project' element={<AddProject submit={submitProjects} />}>
+              <Route path='images' element={<AddImages submit={submitCoverImage} />} />
+            </Route>
+            <Route path='/:title' element={<ProjectDetails projects={projectBase.current} />} />
           </Route>
-          <Route path='/:title' element={<ProjectDetails projects={projectBase.current} />} />
-        </Route>
 
-      </Routes>}
-
+        </Routes>}
+      </ThemeProvider>
     </div>
   );
 }

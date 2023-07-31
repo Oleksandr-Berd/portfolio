@@ -22,16 +22,18 @@ export const InputStyled = styled.input`
 
   &::placeholder {
     font-size: 13px;
+    color: ${(props) => props.theme.color.mainText};
   }
 `;
 
 export const LabelStyled = styled.label`
-margin-bottom: ${props => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 
-font-size: ${props => props.theme.size.S};
-line-height: 2.31;
-font-weight: ${props => props.theme.weight.normal};
-`
+  font-size: ${(props) => props.theme.size.S};
+  line-height: 2.31;
+  font-weight: ${(props) => props.theme.weight.normal};
+  color: ${(props) => props.theme.color.mainText};
+`;
 
 export const ErrorStyled = styled.p`
   color: ${(props) => props.theme.color.errors};
@@ -51,6 +53,10 @@ export const TextAreaStyled = styled.textarea`
   background-color: rgba(151, 151, 151, 0.3);
 
   border: none;
+
+  &::placeholder {
+    color: ${(props) => props.theme.color.mainText};
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -63,7 +69,7 @@ export const SubmitButton = styled.button`
 
   text-transform: uppercase;
   font-size: ${(props) => props.theme.size.XS};
-  color: ${(props) => props.theme.color.secondaryBody};
-  background-color: ${(props) => props.theme.color.dark};
+  color: ${(props) => props.theme.color.page};
+  background-color: ${(props) => props.theme.color.mainText};
   letter-spacing: 2px;
 `;

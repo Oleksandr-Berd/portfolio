@@ -11,7 +11,7 @@ text-align: center;
 
 export const DropdownToggle = styled(Dropdown.Toggle)`
   background: transparent;
-  color: ${(props) => props.theme.color.semiDark};
+  color: ${(props) => props.theme.color.mainText};
   font-family: ${(props) => props.theme.fontFamily.body};
 
   border-color: ${(props) => props.theme.color.border};
@@ -30,11 +30,12 @@ export const DropdownMenu = styled(Dropdown.Menu)`
   padding-bottom: ${(props) => props.theme.space[6]};
   padding-left: ${(props) => props.theme.space[4]};
 
-  background: ${(props) => props.theme.color.dark};
+  background: ${(props) => props.theme.color.page};
 `;
 
 export const DropdownItem = styled(Dropdown.Item)`
-  color: ${(props) => props.theme.color.secondaryBody};
+  color: ${(props) => props.theme.color.mainText};
+
   font-size: ${(props) => props.theme.size.N};
   line-height: 1.2;
 
@@ -66,7 +67,11 @@ export const SearchFilterInput = styled.input`
 
   font-size: ${(props) => props.theme.size.N};
 
-  border-radius: ${props => props.theme.radius[1]};
+  border-radius: ${(props) => props.theme.radius[1]};
+
+  &&&::placeholder {
+    color: ${(props) => props.theme.color.placeholder};
+  }
 `;
 
 export const SearchIcon = styled(GrTechnology)`

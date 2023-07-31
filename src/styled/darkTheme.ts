@@ -1,4 +1,4 @@
-const theme: object = {
+const darkTheme: object = {
   space: [
     "0px", //0
     "4px", //1
@@ -69,15 +69,17 @@ const theme: object = {
     body: "Public Sans",
   },
   color: {
-    page: "#F2F2F2",
+    page: "#33323D",
     errors: "#F43030",
     text: "#EAEAEB",
-    bg: "#FAFAFA",
+    bg: "#33323D",
     cyan: "#5FB4A2",
     dark: "#203A4C",
-    mainText: "#33323D",
+    secondaryBody: "#33323D",
     border: "#979797",
-    secondaryBody: "#ffffff",
+    mainText: "#FAFAFA",
+
+      placeholder: "#203A4C",
 
     main: "#10141E",
     secondary: "#5A698F",
@@ -97,4 +99,4 @@ const theme: object = {
   ],
 };
 
-export default theme;
+export default darkTheme;
