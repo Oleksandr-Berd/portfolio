@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Switch } from "@blueprintjs/core";
 import { BsSun } from 'react-icons/bs'
 
@@ -8,19 +8,21 @@ import logo from "../../assets/images/we_stand_with_ukraine_banner_template_dove
 import {ReactComponent as DarkThemeSvg} from "../../assets/images/icons/iconoir_half-moon.svg"
 
 import HamburgerMenu from "../BurgerMenu/HamburgerMenu";
+import ThemeContext from '../../context/themeContext';
 
 
 
 const Header: React.FC = (): JSX.Element => {
+    const { theme ,toggle} = useContext(ThemeContext)
+
     const [isOpened, setIsOpened] = useState<boolean>(false)
-    const [isLightTheme, setIsLightTheme] = useState<boolean>(true)
 
     const handleMenu = (): void => {
         setIsOpened(!isOpened)
     }
 
     const toggleTheme = () => {
-        setIsLightTheme(!isLightTheme)
+        toggle(theme)
     }
 
 
@@ -29,7 +31,7 @@ const Header: React.FC = (): JSX.Element => {
             <SC.LogoImage src={logo} alt="logo" />
         </SC.LogoContainer>
         <div>
-            <Switch labelElement={isLightTheme ? <BsSun size={16} /> : <DarkThemeSvg width={16} />} onChange={toggleTheme} checked={isLightTheme} />
+            <Switch labelElement={theme === "light" ? <BsSun size={16} /> : <DarkThemeSvg width={16} />} onChange={toggleTheme} checked={theme === "light"} />
         </div>
         <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /></SC.HeaderStyled>);
 }
