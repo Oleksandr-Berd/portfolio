@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import theme from './styled/theme';
+import lightTheme from './styled/theme';
 import { GlobalStyles } from './styled/GlobalStyles';
 import { persistor, store } from './redux/store';
 import { Provider } from 'react-redux';
@@ -21,7 +21,7 @@ root.render(
     <BrowserRouter>
 
 
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={lightTheme}>
         <GlobalStyles />
         <App />
       </ThemeProvider>

@@ -1,4 +1,4 @@
-const theme: object = {
+const lightTheme: object = {
   space: [
     "0px", //0
     "4px", //1
@@ -97,4 +97,4 @@ const theme: object = {
   ],
 };
 
-export default theme;
+export default lightTheme;

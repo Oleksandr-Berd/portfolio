@@ -5,9 +5,7 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from './redux/auth/operations';
 import { Project, IFetchProjects } from './utils/interfaces';
 import { addProject, getAll, updateCover } from './utils/services';
-import { useAuth } from './hooks';
-import { AxiosResponse } from 'axios';
-
+import { useAuth } from './hooks';  
 
 const ProjectDetails = lazy(() => import('./components/ProjectDetails/ProjectDetails'))
 const ContactPage = lazy(() => import('./pages/ContactPage/ContactPage'))
@@ -82,6 +80,7 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <div className="App">
+
       {error ? <h1>{error}</h1> : <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
@@ -95,7 +94,6 @@ const App: React.FC = (): JSX.Element => {
         </Route>
 
       </Routes>}
-
     </div>
   );
 }
