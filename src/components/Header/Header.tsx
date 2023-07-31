@@ -30,9 +30,9 @@ const Header: React.FC = (): JSX.Element => {
         <SC.LogoContainer>
             <SC.LogoImage src={logo} alt="logo" />
         </SC.LogoContainer>
-        <div>
-            <Switch labelElement={theme === "light" ? <BsSun size={16} /> : <DarkThemeSvg width={16} />} onChange={toggleTheme} checked={theme === "light"} />
-        </div>
+        <SC.ToggleTheme>
+            <Switch labelElement={theme === "light" ? <BsSun size={20} /> :<DarkThemeSvg width={20}/>} onChange={toggleTheme} checked={theme === "light"} />
+        </SC.ToggleTheme>
         <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /></SC.HeaderStyled>);
 }
 
