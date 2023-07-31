@@ -51,27 +51,29 @@ export const ItemStyled = styled.li`
 //Accordion
 
 export const AccordionStyled = styled(Accordion)`
-position: relative;
+  position: relative;
 
   &&& button {
     background-color: transparent;
     border: none;
+    color: ${(props) => props.theme.color.mainText};
   }
 
   &&& button::after {
-position: absolute;
-bottom: 0;
-left: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
-transform: translateX(20px);
+    transform: translateX(20px);
 
-width:${props => props.theme.percentage[10]};
+    width: ${(props) => props.theme.percentage[10]};
 
-   content: "Read more...";
+    content: "Read more...";
 
-   font-style: italic;
-   font-weight: ${props =>props.theme.weight.bold};
-   background: none;
+    font-style: italic;
+    font-weight: ${(props) => props.theme.weight.bold};
+    background: none;
+    color: ${(props) => props.theme.color.mainText};
   }
 `;
 
@@ -79,6 +81,7 @@ export const AccordionItem = styled(Accordion.Item)`
   &&& {
     background-color: transparent;
     border: none;
+    color: ${(props) => props.theme.color.mainText};
   }
 `;
 
@@ -86,15 +89,18 @@ export const Text = styled(Accordion.Body)`
   margin-bottom: ${(props) => props.theme.space[6]};
   font-size: ${(props) => props.theme.size.N};
   line-height: 2;
+  color: ${props => props.theme.color.mainText};
 `;
 
 export const AccordionHeader = styled(Accordion.Header)`
   margin-bottom: ${(props) => props.theme.space[6]};
   font-size: ${(props) => props.theme.size.N};
+  color: white;
   line-height: 2;
 
   &&& {
     background-color: transparent;
     border: none;
+    color: white;
   }
 `;

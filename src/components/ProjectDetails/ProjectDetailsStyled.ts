@@ -165,11 +165,16 @@ export const FlexButtonsContainer = styled.div`
 `;
 
 export const ButtonLeft = styled.button<Partial<IProps>>`
-padding-left: 0;
+  padding-left: 0;
   text-align: left;
 
   background-color: transparent;
   border: none;
+
+  & > h4 {
+    color: ${(props) =>
+      !props.disabled ? props.theme.color.mainText : props.theme.color.border};
+  }
 `;
 
 export const ButtonRight = styled.button<Partial<IProps>>`
@@ -178,7 +183,13 @@ export const ButtonRight = styled.button<Partial<IProps>>`
   background-color: transparent;
   border: none;
 
-  &:active, &:focus{
+  & > h4 {
+    color: ${(props) =>
+      !props.disabled ? props.theme.color.mainText : props.theme.color.border};
+  }
+
+  &:active,
+  &:focus {
     border: none;
   }
 `;
@@ -190,6 +201,7 @@ export const ButtonTitle = styled.h4`
   line-height: 1.13;
   letter-spacing: -0.29px;
   font-weight: ${(props) => props.theme.weight.normal};
+ 
 `;
 
 export const ButtonText = styled.p`

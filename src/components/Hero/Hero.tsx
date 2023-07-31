@@ -12,7 +12,7 @@ const Hero: React.FC = (): JSX.Element => {
             <SC.IconContainer>
                 <DownArrowsSvg/>
             </SC.IconContainer>
-            <span>About me</span>
+            <SC.ButtonText>About me</SC.ButtonText>
         </SC.ButtonLink>
     </SC.HeroContainer> );
 }

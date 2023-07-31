@@ -69,15 +69,17 @@ const darkTheme: object = {
     body: "Public Sans",
   },
   color: {
-    page: "#F2F2F2",
+    page: "#33323D",
     errors: "#F43030",
     text: "#EAEAEB",
-    bg: "#FAFAFA",
+    bg: "#33323D",
     cyan: "#5FB4A2",
     dark: "#203A4C",
     secondaryBody: "#33323D",
     border: "#979797",
-    mainText: "#ffffff",
+    mainText: "#FAFAFA",
+
+      placeholder: "#203A4C",
 
     main: "#10141E",
     secondary: "#5A698F",
