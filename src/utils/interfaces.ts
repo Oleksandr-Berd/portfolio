@@ -19,7 +19,7 @@ export interface IBurgerMenuProps {
 }
 
  export interface INavBarProps {
-   id?: number;
+   id: number;
    title: string;
    path: string;
    position: "header" | "footer";

@@ -10,8 +10,6 @@ import {ReactComponent as DarkThemeSvg} from "../../assets/images/icons/iconoir_
 
 import HamburgerMenu from "../BurgerMenu/HamburgerMenu";
 import ThemeContext from '../../context/themeContext';
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import NavBar from "../NavBar/NavBar";
 import PageNav from "../PageNav/PageNav";
 
 
