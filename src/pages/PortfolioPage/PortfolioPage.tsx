@@ -7,6 +7,7 @@ import * as SC from "./PortfolioPageStyled"
 import { IFetchProjects, Project } from "../../utils/interfaces";
 import ProjectItem from "../../components/ProjectsList/ProjectItem";
 import ContactMe from "../../components/ContactMe/ContactMe";
+import { useMediaQuery } from 'usehooks-ts';
 
 
 interface IProps {
@@ -22,6 +23,9 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
     const [currentPage, setCurrentPage] = useState<number>(1)
     const observer = useRef(null);
     const lastItemRef = useRef(null);
+
+
+const isTablet = useMediaQuery("(min-width:768px")
 
     const handleDifficultyChange = (eventKey: string | null): void => {
 
@@ -79,12 +83,12 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
             wrapperStyle={{}}
             wrapperClass="dna-wrapper"
         /> : null}
-        <SC.DropDownContainer>
+        {isTablet ? <SC.FilterContainer><SC.DropDownContainer>
             <Dropdown onSelect={handleDifficultyChange}>
                 <SC.DropdownToggle variant="success" id="dropdown-basic">
                     Choose the project's difficulty
                 </SC.DropdownToggle>
-               
+
                 <SC.DropdownMenu >
                     <SC.DropdownItem name="Get All" eventKey="Get All">Get All</SC.DropdownItem>
                     <SC.DropdownItem eventKey="junior">Junior</SC.DropdownItem>
@@ -94,14 +98,40 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
                 </SC.DropdownMenu>
             </Dropdown>
         </SC.DropDownContainer>
-        <SC.OrTitle>or</SC.OrTitle>
-        <SC.DropDownContainer style={{marginBottom:"32px"}}>  
-            <SC.FilterInputContainer>
-                <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
-                <SC.SearchIcon/>
-                <SC.SearchFilterInput type="text" name="tech" id="tech" placeholder="type interested technology..." onChange={handleTechChange} />
-            </SC.FilterInputContainer>
-        </SC.DropDownContainer>
+            <SC.OrTitle>or</SC.OrTitle>
+            <SC.DropDownContainer style={{ marginBottom: !isTablet && "32px" }}>
+                <SC.FilterInputContainer>
+                    <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
+                    <SC.SearchIcon />
+                    <SC.SearchFilterInput type="text" name="tech" id="tech" placeholder="type interested technology..." onChange={handleTechChange} />
+                </SC.FilterInputContainer>
+            </SC.DropDownContainer></SC.FilterContainer> : <>
+                <SC.DropDownContainer>
+                    <Dropdown onSelect={handleDifficultyChange}>
+                        <SC.DropdownToggle variant="success" id="dropdown-basic">
+                            Choose the project's difficulty
+                        </SC.DropdownToggle>
+
+                        <SC.DropdownMenu >
+                            <SC.DropdownItem name="Get All" eventKey="Get All">Get All</SC.DropdownItem>
+                            <SC.DropdownItem eventKey="junior">Junior</SC.DropdownItem>
+                            <SC.DropdownItem eventKey="intermediate">Intermediate</SC.DropdownItem>
+                            <SC.DropdownItem eventKey="advanced">Advanced</SC.DropdownItem>
+                            <SC.DropdownItem eventKey="guru">Guru</SC.DropdownItem>
+                        </SC.DropdownMenu>
+                    </Dropdown>
+                </SC.DropDownContainer>
+                <SC.OrTitle>or</SC.OrTitle>
+                <SC.DropDownContainer style={{ marginBottom: "32px" }}>
+                    <SC.FilterInputContainer>
+                        <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
+                        <SC.SearchIcon />
+                        <SC.SearchFilterInput type="text" name="tech" id="tech" placeholder="type interested technology..." onChange={handleTechChange} />
+                    </SC.FilterInputContainer>
+                </SC.DropDownContainer>
+        </>}
+
+        
         <ul>
             {projects ? projects.map(({ _id, title, task, liveUrl, coverImage }, index, array) => (<SC.ItemStyled key={_id}>
                 {/* wrapped in div for pagination purposes*/}

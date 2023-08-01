@@ -12,7 +12,6 @@ const Hero: React.FC = (): JSX.Element => {
 
     const isMobile = useMediaQuery("(max-width:767px)")
     const isTablet = useMediaQuery("(min-with:768px)")
-    const isDesktop = useMediaQuery("(min-with:1440px)")
 
     return (<SC.HeroContainer $heroImage={isTablet ? heroTablet : heroDesktop}>
         {isMobile ? <SC.HeroPic src={heroMobile} alt="hero" /> : null}

@@ -52,10 +52,18 @@ display: inline-block;
   font-size: ${(props) => props.theme.size.N};
   font-style: italic;
   font-weight: ${props => props.theme.weight.bold};
+
+  @media (min-width: 768px){
+    display: none;
+  }
 `;
 
 export const FilterInputContainer = styled.div`
 position: relative;
+
+@media (min-width: 768px){
+  min-width: 257px;
+}
 `;
 
 export const SearchFilterInput = styled.input`
@@ -98,3 +106,14 @@ export const ItemStyled = styled.div`
     margin-bottom: ${(props) => props.theme.space[13]};
   }
 `;
+
+//tablet
+
+export const FilterContainer = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+
+margin-bottom: ${props => props.theme.space[8]};
+`
