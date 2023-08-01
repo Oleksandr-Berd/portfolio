@@ -86,10 +86,13 @@ export const AccordionStyled = styled(Accordion)`
 
 export const AccordionItem = styled(Accordion.Item)`
   &&& {
+
     background-color: transparent;
     border: none;
     color: ${(props) => props.theme.color.mainText};
   }
+
+
 `;
 
 export const TextAccordion = styled(Accordion.Body)`
@@ -109,5 +112,9 @@ export const AccordionHeader = styled(Accordion.Header)`
     background-color: transparent;
     border: none;
     color: white;
+  }
+
+  &&& > button {
+    padding-left: 0;
   }
 `;
