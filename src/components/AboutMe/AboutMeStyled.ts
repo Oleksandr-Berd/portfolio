@@ -18,7 +18,7 @@ export const ContentContainer = styled.div`
 
   @media (min-width: 768px) {
     padding-top: 51px;
-
+    padding-bottom: 36px;
     margin-left: ${(props) => props.theme.space[12]};
   }
 `;
@@ -30,7 +30,7 @@ export const AvatarPic = styled.img`
 
   @media (min-width: 768px) {
     width: 300px;
-    height: 444px;
+    height: 429px;
     margin-bottom: 0;
   }
 `;

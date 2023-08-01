@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useMediaQuery } from 'usehooks-ts';
 
 import * as SC from "./FooterStyled"
 
@@ -10,14 +11,15 @@ import ThemeContext from '../../context/themeContext';
 
 
 const Footer: React.FC = (): JSX.Element => {
-const {theme} = useContext(ThemeContext)    
+    const { theme } = useContext(ThemeContext)
+
+    const isMobile = useMediaQuery("(max-width:767px)")
     
     return (<SC.FooterStyled>
         <SC.LogoContainer>
             <SC.LogoImage src={logo} alt="logo" />
         </SC.LogoContainer>
-        <NavBar navList={<PageNav position="footer"/>} margin={"40px"} />
-        const {theme} = useContext(ThemeContextProvider)
+        <NavBar navList={<PageNav position="footer"/>} margin={isMobile ? "40px" : "0"} />
         <NavBar navList={<SocNet theme={theme} $justified="center"/>} />
     </SC.FooterStyled> );
 }

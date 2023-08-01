@@ -11,10 +11,11 @@ export const NavList = styled.ul`
 `
 
 export const Item = styled.li`
+
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[8]};
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
       margin-bottom: 0;
 
       margin-right: 42px;
@@ -22,7 +23,8 @@ export const Item = styled.li`
   }
 `;
 
-export const ItemLink = styled(NavLink)<Pick <INavBarProps, "position">>`
+export const ItemLink = styled(NavLink)<Pick<INavBarProps, "position">>`
+
   text-decoration: none;
   text-transform: uppercase;
   font-weight: ${(props) => props.theme.weight.normal};
