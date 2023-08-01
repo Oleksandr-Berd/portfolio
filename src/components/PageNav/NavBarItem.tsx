@@ -1,14 +1,9 @@
+import { INavBarProps } from "../../utils/interfaces";
 import * as SC from "./PageNavStyled"
 
-interface IProps {
-    id?: number,
-    title: string,
-    path: string,
-}
-
-const NavBarItem: React.FC<IProps> = ({ title, path }): JSX.Element => {
+const NavBarItem: React.FC<INavBarProps> = ({ title, path, position }): JSX.Element => {
     return (<SC.Item>
-        <SC.ItemLink to={path}>{title}</SC.ItemLink>
+        <SC.ItemLink to={path} position={position}>{title}</SC.ItemLink>
     </SC.Item> );
 }
  

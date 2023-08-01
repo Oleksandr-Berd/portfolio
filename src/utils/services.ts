@@ -62,4 +62,13 @@ export const updateCover = async (data: {}, title: string, token: string) => {
   }
 };
 
+export const sendMessage = async (data: {}) => {
+  try {    
+    const response = await instance.post("/mail", data)
+
+    return response.data.email
+  } catch (error) {
+    return error.response;
+  }
+}
 
