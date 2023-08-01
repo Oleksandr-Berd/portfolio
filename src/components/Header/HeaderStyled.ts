@@ -11,6 +11,14 @@ export const HeaderStyled = styled.header`
   padding-bottom: ${(props) => props.theme.space[8]};
   padding-right: ${(props) => props.theme.space[8]};
   padding-left: ${(props) => props.theme.space[8]};
+
+  @media (min-width: 768px) {
+    padding-top: 64px;
+    padding-bottom: ${(props) => props.theme.space[11]};
+
+    padding-right: ${(props) => props.theme.space[10]};
+    padding-left: ${(props) => props.theme.space[10]};
+  }
 `;
 
 export const LogoContainer = styled.div`

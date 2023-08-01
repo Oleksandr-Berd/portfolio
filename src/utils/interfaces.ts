@@ -14,9 +14,16 @@ export interface IPropsInput {
 }
 
 export interface IBurgerMenuProps {
-  handleMenu: () => void;
+  handleMenu?: () => void;
   isOpen?: boolean;
 }
+
+ export interface INavBarProps {
+   id?: number;
+   title: string;
+   path: string;
+   position: "header" | "footer";
+ }
 
 export type Data = { email: String; password: String };
 

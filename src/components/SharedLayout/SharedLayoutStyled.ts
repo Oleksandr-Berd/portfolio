@@ -9,4 +9,9 @@ export const LayoutStyled = styled.div`
 export const MainStyled = styled.main`
   padding-right: ${(props) => props.theme.space[8]};
   padding-left: ${(props) => props.theme.space[8]};
+
+  @media (min-width: 768px) {
+    padding-right: ${(props) => props.theme.space[10]};
+    padding-left: ${(props) => props.theme.space[10]};
+  }
 `;

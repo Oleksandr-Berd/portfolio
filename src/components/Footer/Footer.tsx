@@ -16,7 +16,7 @@ const {theme} = useContext(ThemeContext)
         <SC.LogoContainer>
             <SC.LogoImage src={logo} alt="logo" />
         </SC.LogoContainer>
-        <NavBar navList={<PageNav />} margin={"40px"} />
+        <NavBar navList={<PageNav position="footer"/>} margin={"40px"} />
         const {theme} = useContext(ThemeContextProvider)
         <NavBar navList={<SocNet theme={theme} $justified="center"/>} />
     </SC.FooterStyled> );

@@ -8,6 +8,7 @@ import * as SC from "./ContactFormStyled"
 
 import SubTitle from "../SubTitle/SubTitle";
 import InputContact from "./InputContact";
+import { sendMessage } from '../../utils/services';
 
 const validationSchema = Yup.object().shape({
     contactName: Yup.string().min(2, "A name can't be so short").required("Name is required"),
@@ -35,11 +36,18 @@ const ContactForm = () => {
         formik.handleChange(evt)
     }
 
-    const handleSubmit = (evt: ChangeEvent<HTMLFormElement>): void => {
+    const handleSubmit = async (evt: ChangeEvent<HTMLFormElement>) => {
         evt.preventDefault()
 
-        console.log(formik.values);
-        toast.success('Your message is sent and will be considered ASAP! ', {
+        const { contactName, contactEmail, message } = formik.values;
+
+
+        const response = await sendMessage({ contactName, contactEmail, message })
+
+        console.log(response);
+
+
+        toast.success(`${contactName}Your message is sent and will be considered ASAP! `, {
             position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
