@@ -40,6 +40,7 @@ export type Project = {
   preview?: string[];
   difficulty: String;
   children?: ReactNode;
+  index?: number;
 };
 
 export interface IFetchProjects {

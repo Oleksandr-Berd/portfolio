@@ -135,7 +135,7 @@ const isTablet = useMediaQuery("(min-width:768px")
         <ul>
             {projects ? projects.map(({ _id, title, task, liveUrl, coverImage }, index, array) => (<SC.ItemStyled key={_id}>
                 {/* wrapped in div for pagination purposes*/}
-                <ProjectItem title={title} task={task} liveUrl={liveUrl} coverImage={coverImage}/>
+                <ProjectItem title={title} task={task} liveUrl={liveUrl} coverImage={coverImage} index={index} />
                 {index === array.length - 1 && <div key={title} ref={lastItemRef} />}
 
             </SC.ItemStyled>
@@ -148,9 +148,9 @@ const isTablet = useMediaQuery("(min-width:768px")
                 wrapperStyle={{}}
                 wrapperClass="dna-wrapper"
             />}     
-       
-<ContactMe/>
         </ul>
+<ContactMe/>
+       
     </div>);
 }
 
