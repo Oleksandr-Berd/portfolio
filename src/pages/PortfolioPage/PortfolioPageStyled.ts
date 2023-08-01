@@ -1,13 +1,12 @@
-import { Dropdown } from "react-bootstrap"
-import styled from "styled-components"
+import { Dropdown } from "react-bootstrap";
+import styled from "styled-components";
 import { GrTechnology } from "react-icons/gr";
 
-
 export const DropDownContainer = styled.form`
-margin-bottom: ${props => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 
-text-align: center;
-`
+  text-align: center;
+`;
 
 export const DropdownToggle = styled(Dropdown.Toggle)`
   background: transparent;
@@ -45,17 +44,25 @@ export const DropdownItem = styled(Dropdown.Item)`
 `;
 
 export const FilterLabel = styled.label`
-display: inline-block;
+  display: inline-block;
 
   margin-bottom: ${(props) => props.theme.space[4]};
 
   font-size: ${(props) => props.theme.size.N};
   font-style: italic;
-  font-weight: ${props => props.theme.weight.bold};
+  font-weight: ${(props) => props.theme.weight.bold};
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const FilterInputContainer = styled.div`
-position: relative;
+  position: relative;
+
+  @media (min-width: 768px) {
+    min-width: 257px;
+  }
 `;
 
 export const SearchFilterInput = styled.input`
@@ -75,13 +82,12 @@ export const SearchFilterInput = styled.input`
 `;
 
 export const SearchIcon = styled(GrTechnology)`
-position: absolute;
-bottom:0;
-left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
-transform: translateY(-90%) translateX(70%);
-
-`
+  transform: translateY(-90%) translateX(70%);
+`;
 
 export const OrTitle = styled.p`
   margin-bottom: ${(props) => props.theme.space[2]};
@@ -89,12 +95,27 @@ export const OrTitle = styled.p`
   text-align: center;
 
   font-style: italic;
-  font-weight: ${props => props.theme.weight.bold};
-  font-size: ${props => props.theme.size.N};
+  font-weight: ${(props) => props.theme.weight.bold};
+  font-size: ${(props) => props.theme.size.N};
 `;
 
 export const ItemStyled = styled.div`
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[13]};
   }
+
+  &:last-child > li {
+    margin-bottom: 0;
+  }
+`;
+
+//tablet
+
+export const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: ${(props) => props.theme.space[8]};
 `;

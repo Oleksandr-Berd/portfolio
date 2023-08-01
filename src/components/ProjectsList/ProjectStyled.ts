@@ -2,14 +2,30 @@ import { Accordion } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components"
 
-export const ImageContainer = styled.div`
-padding-bottom: ${props => props.theme.space[8]};
 
-border-bottom: 1px solid ${props => props.theme.color.border};
-`
+interface IProps {
+  position?:string,
+}
+
+export const ImageContainer = styled.div<IProps>`
+  padding-bottom: ${(props) => props.theme.space[8]};
+
+  border-bottom: 1px solid ${(props) => props.theme.color.border};
+
+  @media (min-width: 768px) {
+    width: 339px;
+    height: 314px;
+
+    margin-right: ${(props) => (props.position === "even" ? "69px" : "0px")};
+    margin-left: ${(props) => (props.position !== "even" ? "69px" : "0px")};
+
+    border: none;
+  }
+`;
 
 export const Image = styled.img`
   width: ${(props) => props.theme.percentage[10]};
+  height: ${(props) => props.theme.percentage[10]};
 `;
 
 export const ContentContainer = styled.div`
@@ -17,6 +33,15 @@ export const ContentContainer = styled.div`
   padding-bottom: ${(props) => props.theme.space[6]};
 
   border-bottom: 1px solid ${(props) => props.theme.color.border};
+
+  @media (min-width: 768px) {
+    width: 281px;
+
+    padding-top: ${(props) => props.theme.space[8]};
+    padding-bottom: 50px;
+
+    border-top: 1px solid ${(props) => props.theme.color.border};
+  }
 `;
 
 export const Title = styled.h3`
@@ -45,6 +70,12 @@ display: inline-block;
 export const ItemStyled = styled.li`
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[13]};
+  }
+
+  @media (min-width: 768px){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 `;
 
@@ -102,5 +133,11 @@ export const AccordionHeader = styled(Accordion.Header)`
     background-color: transparent;
     border: none;
     color: white;
+  }
+
+  @media (min-width: 768px) {
+    &&& > button {
+      padding-left: 0;
+    }
   }
 `;

@@ -23,6 +23,8 @@ export interface IBurgerMenuProps {
    title: string;
    path: string;
    position: "header" | "footer";
+   pathname: string;
+   active: string | null;
  }
 
 export type Data = { email: String; password: String };
@@ -38,6 +40,7 @@ export type Project = {
   preview?: string[];
   difficulty: String;
   children?: ReactNode;
+  index?: number;
 };
 
 export interface IFetchProjects {
