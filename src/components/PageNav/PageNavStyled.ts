@@ -22,7 +22,7 @@ export const Item = styled.li`
   }
 `;
 
-export const ItemLink = styled(NavLink)<Partial <INavBarProps>>`
+export const ItemLink = styled(NavLink)<Pick <INavBarProps, "position">>`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: ${(props) => props.theme.weight.normal};
