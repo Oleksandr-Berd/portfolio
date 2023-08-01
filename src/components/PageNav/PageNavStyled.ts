@@ -23,7 +23,7 @@ export const Item = styled.li`
   }
 `;
 
-export const ItemLink = styled(NavLink)<Pick<INavBarProps, "position">>`
+export const ItemLink = styled(NavLink)<Pick<INavBarProps, "position" | "active">>`
 
   text-decoration: none;
   text-transform: uppercase;
@@ -31,7 +31,9 @@ export const ItemLink = styled(NavLink)<Pick<INavBarProps, "position">>`
   color: ${(props) =>
     props.position === "footer"
       ? props.theme.color.secondaryBody
-      : props.theme.color.mainText};
+    : props.position === "header" && props.active === "active" ? props.theme.color.cyan :
+    props.theme.color.mainText};
+      
   font-family: ${(props) => props.theme.fontFamily.body};
   font-size: ${(props) => props.theme.size.XS};
   letter-spacing: 2px;
