@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 
 interface IProps {
-  position?:string,
+  $position?:string,
 }
 
 export const ImageContainer = styled.div<IProps>`
@@ -16,8 +16,8 @@ export const ImageContainer = styled.div<IProps>`
     width: 339px;
     height: 314px;
 
-    margin-right: ${(props) => (props.position === "even" ? "69px" : "0px")};
-    margin-left: ${(props) => (props.position !== "even" ? "69px" : "0px")};
+    margin-right: ${(props) => (props.$position === "even" ? "69px" : "0px")};
+    margin-left: ${(props) => (props.$position !== "even" ? "69px" : "0px")};
 
     border: none;
   }

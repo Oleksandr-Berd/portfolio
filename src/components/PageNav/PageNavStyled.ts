@@ -23,15 +23,15 @@ export const Item = styled.li`
   }
 `;
 
-export const ItemLink = styled(NavLink)<Pick<INavBarProps, "position" | "active">>`
+export const ItemLink = styled(NavLink)<Pick<INavBarProps, "$position" | "active">>`
 
   text-decoration: none;
   text-transform: uppercase;
   font-weight: ${(props) => props.theme.weight.normal};
   color: ${(props) =>
-    props.position === "footer"
+    props.$position === "footer"
       ? props.theme.color.secondaryBody
-    : props.position === "header" && props.active === "active" ? props.theme.color.cyan :
+    : props.$position === "header" && props.active === "active" ? props.theme.color.cyan :
     props.theme.color.mainText};
       
   font-family: ${(props) => props.theme.fontFamily.body};

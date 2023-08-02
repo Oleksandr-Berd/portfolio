@@ -16,6 +16,10 @@ export const HeroContainer = styled.div<IProps>`
 
     background-image: url(${(props) => props.$heroImage});
     background-size: contain;
+
+    @media (min-width: 820px) {
+      background-size: cover;
+    }
   }
 `;
 

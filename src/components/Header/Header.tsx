@@ -38,7 +38,7 @@ const Header: React.FC = (): JSX.Element => {
         <SC.ToggleTheme>
             <Switch labelElement={theme === "light" ? <BsSun size={20} /> :<DarkThemeSvg width={20}/>} onChange={toggleTheme} checked={theme === "light"} />
         </SC.ToggleTheme>
-        {isMobile ? <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /> : <PageNav position="header"/>}
+        {isMobile ? <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /> : <PageNav $position="header"/>}
 
     </SC.HeaderStyled>
     )
