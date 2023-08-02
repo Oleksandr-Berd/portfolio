@@ -9,7 +9,7 @@ const path = "/portfolio"
 
 const AboutMe: React.FC = (): JSX.Element => {
 
-const isTablet = useMediaQuery("(min-width:768px)")
+    const isTablet = useMediaQuery("(min-width:768px)")
 
     return (<SC.CommonContainer >
         <SC.AvatarPic src={avatarPic} alt="avatar" />
@@ -34,7 +34,7 @@ const isTablet = useMediaQuery("(min-width:768px)")
                 </SC.AccordionItem>
             </SC.AccordionStyled>
             <LinkButton path={path} text={pathText} />
-        </SC.ContentContainer> : <SC.ContentContainer id="aboutMe">
+        </SC.ContentContainer> :  <SC.ContentContainer id="aboutMe">
             <SC.Title>About Me</SC.Title>
             <SC.Text><p>Hey there, fellow tech enthusiasts!</p>
                 <p> 👨‍💻 Imagine a passionate developer who dances effortlessly with the MERN (MongoDB, Express.js, React, Node.js) tech stack. Well, that's me!</p>

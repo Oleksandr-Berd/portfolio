@@ -15,4 +15,20 @@ export const ButtonLink = styled(NavLink)`
   background-color: transparent;
 
   border: 1px solid ${(props) => props.theme.color.mainText};
+
+  @media (min-width: 1440px) {
+    margin-top: ${(props) => props.theme.space[12]};
+
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: ${(props) => props.theme.color.mainText};
+      color: ${(props) => props.theme.color.hover};
+
+      text-decoration: none;
+
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+  }
 `;
