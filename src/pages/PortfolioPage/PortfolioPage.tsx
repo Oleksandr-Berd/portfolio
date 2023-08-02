@@ -35,6 +35,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
             setDifficulty(eventKey)
             setCurrentPage(1)
         }
+        setTech("")
     }
 
     const handleTechChange = (evt: ChangeEvent<HTMLInputElement>):void => {
