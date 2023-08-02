@@ -4,7 +4,7 @@ import { IFetchProjects } from "./interfaces";
 
 
 const instance = axios.create({
-    baseURL: "http://localhost:5002/api/portfolio",
+  baseURL: "https://common-server-ldx7.onrender.com/api/portfolio",
 });
 
 export const getAll = async (args: IFetchProjects): Promise<AxiosResponse<any>> => {

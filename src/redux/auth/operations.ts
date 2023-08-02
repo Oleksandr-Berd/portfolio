@@ -9,7 +9,7 @@ export interface IUser {
 }
 
 axios.defaults.baseURL =
-  "http://localhost:5002/api/portfolio";
+  "https://common-server-ldx7.onrender.com/api/portfolio";
 
 const setAuthHeader = (token: string | null) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
