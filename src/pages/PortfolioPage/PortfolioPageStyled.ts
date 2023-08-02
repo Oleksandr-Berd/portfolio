@@ -6,6 +6,10 @@ export const DropDownContainer = styled.form`
   margin-bottom: ${(props) => props.theme.space[2]};
 
   text-align: center;
+
+  @media (min-width: 1440px) {
+    width: ${(props) => props.theme.percentage[7]};
+  }
 `;
 
 export const DropdownToggle = styled(Dropdown.Toggle)`
@@ -22,6 +26,12 @@ export const DropdownToggle = styled(Dropdown.Toggle)`
     color: ${(props) => props.theme.color.semiDark};
     border-color: ${(props) => props.theme.color.border};
   }
+
+  @media (min-width: 1440px) {
+    &&& {
+      font-size: ${(props) => props.theme.size.XXN};
+    }
+  }
 `;
 
 export const DropdownMenu = styled(Dropdown.Menu)`
@@ -30,6 +40,17 @@ export const DropdownMenu = styled(Dropdown.Menu)`
   padding-left: ${(props) => props.theme.space[4]};
 
   background: ${(props) => props.theme.color.page};
+
+  @media (min-width: 1440px) {
+    width: calc(
+      ${(props) => props.theme.percentage[7]} -
+        ${(props) => props.theme.space[8]}
+    );
+
+    padding-top: ${(props) => props.theme.space[10]};
+    padding-bottom: ${(props) => props.theme.space[10]};
+    padding-left: ${(props) => props.theme.space[8]};
+  }
 `;
 
 export const DropdownItem = styled(Dropdown.Item)`
@@ -40,6 +61,22 @@ export const DropdownItem = styled(Dropdown.Item)`
 
   &:not(:last-child) {
     margin-bottom: ${(props) => props.theme.space[4]};
+  }
+
+  @media (min-width: 1440px) {
+    font-size: ${(props) => props.theme.size.XXN};
+
+    transition: color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: ${(props) => props.theme.color.hover};
+
+      text-decoration: none;
+
+      transition: color 0.3s ease-in-out;
+    }
   }
 `;
 
@@ -63,6 +100,14 @@ export const FilterInputContainer = styled.div`
   @media (min-width: 768px) {
     min-width: 257px;
   }
+
+  @media (min-width: 768px) {
+    min-width: 257px;
+  }
+
+  @media (min-width: 1440px) {
+    width: ${(props) => props.theme.percentage[10]};
+  }
 `;
 
 export const SearchFilterInput = styled.input`
@@ -79,6 +124,14 @@ export const SearchFilterInput = styled.input`
   &&&::placeholder {
     color: ${(props) => props.theme.color.placeholder};
   }
+
+  @media (min-width: 1440px) {
+    padding-left: ${(props) => props.theme.space[12]};
+    padding-top: ${(props) => props.theme.space[3]};
+    padding-bottom: ${(props) => props.theme.space[3]};
+
+    font-size: ${(props) => props.theme.size.XXN};
+  }
 `;
 
 export const SearchIcon = styled(GrTechnology)`
@@ -87,6 +140,10 @@ export const SearchIcon = styled(GrTechnology)`
   left: 0;
 
   transform: translateY(-90%) translateX(70%);
+
+  @media (min-width: 1440px) {
+    transform: translateY(-70%) translateX(70%);
+  }
 `;
 
 export const OrTitle = styled.p`
@@ -97,6 +154,10 @@ export const OrTitle = styled.p`
   font-style: italic;
   font-weight: ${(props) => props.theme.weight.bold};
   font-size: ${(props) => props.theme.size.N};
+
+  @media (min-width: 1440px) {
+    font-size: ${(props) => props.theme.size.XXN};
+  }
 `;
 
 export const ItemStyled = styled.div`
@@ -118,4 +179,8 @@ export const FilterContainer = styled.div`
   justify-content: space-between;
 
   margin-bottom: ${(props) => props.theme.space[8]};
+
+  @media (min-width: 1440px) {
+    flex-direction: column;
+  }
 `;
