@@ -18,6 +18,13 @@ export const FooterStyled = styled.footer`
     padding-left: ${(props) => props.theme.space[10]};
     padding-right: ${(props) => props.theme.space[10]};
   }
+
+  @media (min-width: 1440px) {
+    padding-left: 165px;
+    padding-right: 165px;
+    padding-top: ${(props) => props.theme.space[8]};
+    padding-bottom: ${(props) => props.theme.space[8]};
+  }
 `;
 
 export const LogoContainer = styled.div`

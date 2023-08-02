@@ -78,8 +78,9 @@ const darkTheme: object = {
     secondaryBody: "#33323D",
     border: "#979797",
     mainText: "#FAFAFA",
+    hover: "#D2691E",
 
-      placeholder: "#203A4C",
+    placeholder: "#203A4C",
 
     main: "#10141E",
     secondary: "#5A698F",

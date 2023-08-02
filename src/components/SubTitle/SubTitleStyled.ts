@@ -7,4 +7,8 @@ export const SubTitleStyled = styled.h3`
   line-height: 1.05;
   font-weight: ${(props) => props.theme.weight.bold};
   letter-spacing: -0.36px;
+
+  @media (min-width: 1440px) {
+    width: ${(props) => props.theme.percentage[5]};
+  }
 `;

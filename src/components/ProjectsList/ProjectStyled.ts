@@ -1,10 +1,9 @@
 import { Accordion } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import styled from "styled-components"
-
+import styled from "styled-components";
 
 interface IProps {
-  $position?:string,
+  $position?: string;
 }
 
 export const ImageContainer = styled.div<IProps>`
@@ -20,6 +19,11 @@ export const ImageContainer = styled.div<IProps>`
     margin-left: ${(props) => (props.$position !== "even" ? "69px" : "0px")};
 
     border: none;
+  }
+
+  @media (min-width: 1440px) {
+    width: 540px;
+    height: 460px;
   }
 `;
 
@@ -42,6 +46,10 @@ export const ContentContainer = styled.div`
 
     border-top: 1px solid ${(props) => props.theme.color.border};
   }
+
+  @media (min-width: 1440px) {
+    width: 360px;
+  }
 `;
 
 export const Title = styled.h3`
@@ -50,10 +58,14 @@ export const Title = styled.h3`
   font-size: ${(props) => props.theme.size.XXM};
   letter-spacing: -0.36px;
   line-height: 1.05;
+
+  @media (min-width: 1440px) {
+    font-size: ${(props) => props.theme.size.SL};
+  }
 `;
 
 export const LinkButton = styled(NavLink)`
-display: inline-block;
+  display: inline-block;
 
   padding-left: ${(props) => props.theme.space[8]};
   padding-right: ${(props) => props.theme.space[9]};
@@ -65,6 +77,19 @@ display: inline-block;
   color: ${(props) => props.theme.color.mainText};
 
   border: 1px solid ${(props) => props.theme.color.mainText};
+
+  @media (min-width: 1440px) {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    &:hover,
+    &:focus {
+      background-color: ${(props) => props.theme.color.mainText};
+      color: ${(props) => props.theme.color.hover};
+
+      text-decoration: none;
+
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+  }
 `;
 
 export const ItemStyled = styled.li`
@@ -72,10 +97,16 @@ export const ItemStyled = styled.li`
     margin-bottom: ${(props) => props.theme.space[13]};
   }
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  @media (min-width: 1440px){
+margin-top: ${props => props.theme.space[9]};
+
+    justify-content: space-between;
   }
 `;
 
@@ -120,7 +151,19 @@ export const Text = styled(Accordion.Body)`
   margin-bottom: ${(props) => props.theme.space[6]};
   font-size: ${(props) => props.theme.size.N};
   line-height: 2;
-  color: ${props => props.theme.color.mainText};
+  color: ${(props) => props.theme.color.mainText};
+
+  /* @media (min-width: 768px) {
+    &&& {
+      top: -50%;
+      z-index: 5;
+
+      width: 90vw;
+      height: 100 vh;
+
+      background-color: ${(props) => props.theme.color.page};
+    }
+  } */
 `;
 
 export const AccordionHeader = styled(Accordion.Header)`
@@ -140,4 +183,12 @@ export const AccordionHeader = styled(Accordion.Header)`
       padding-left: 0;
     }
   }
+`;
+
+//tablet
+
+export const NotMobileHeader = styled.div`
+  margin-bottom: ${(props) => props.theme.space[6]};
+  font-size: ${(props) => props.theme.size.N};
+  line-height: 2;
 `;

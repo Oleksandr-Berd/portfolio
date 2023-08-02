@@ -21,10 +21,8 @@ const ProjectItem: React.FC<Partial<Project>> = (args): JSX.Element => {
                     <SC.Title>{title}</SC.Title>
                     <SC.AccordionStyled>
                         <SC.AccordionItem eventKey="0">
-                            <SC.AccordionHeader>{taskTitle}...</SC.AccordionHeader>
-                            <SC.Text>
-                                {task}
-                            </SC.Text>
+                            <SC.NotMobileHeader>{taskTitle}...</SC.NotMobileHeader>
+                          
                         </SC.AccordionItem>
                     </SC.AccordionStyled>
                     <SC.LinkButton to={`/${title}`}>view project</SC.LinkButton>
@@ -33,10 +31,8 @@ const ProjectItem: React.FC<Partial<Project>> = (args): JSX.Element => {
                     <SC.Title>{title}</SC.Title>
                     <SC.AccordionStyled>
                         <SC.AccordionItem eventKey="0">
-                            <SC.AccordionHeader>{taskTitle}...</SC.AccordionHeader>
-                            <SC.Text>
-                                {task}
-                            </SC.Text>
+                                <SC.NotMobileHeader>{taskTitle}...</SC.NotMobileHeader>
+                            
                         </SC.AccordionItem>
                     </SC.AccordionStyled>
                     <SC.LinkButton to={`/${title}`}>view project</SC.LinkButton>

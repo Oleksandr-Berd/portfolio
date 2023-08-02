@@ -17,10 +17,14 @@ export const ImageContainer = styled.div`
   padding-bottom: ${(props) => props.theme.space[8]};
 
   border-bottom: 1px solid ${(props) => props.theme.color.border};
+
+ 
 `;
 
 export const Image = styled.img`
   width: ${(props) => props.theme.percentage[10]};
+
+
 `;
 
 export const DifficultyContainer = styled.div`
@@ -77,7 +81,7 @@ export const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
 
     margin-bottom: ${props => props.theme.space[6]};
   }
@@ -110,6 +114,16 @@ export const LinkButton = styled(NavLink)`
   color: ${(props) => props.theme.color.mainText};
 
   border: 1px solid ${(props) => props.theme.color.mainText};
+
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: ${(props) => props.theme.color.mainText};
+    color: ${(props) => props.theme.color.hover};
+
+    text-decoration: none;
+  }
 `;
 
 export const TechStackList = styled.ul`
@@ -129,6 +143,12 @@ export const TechStackList = styled.ul`
     grid-template-columns: repeat(2, 1fr);
     gap: ${props => props.theme.space[3]};
   }
+
+  @media (min-width: 1440px){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 export const TechStackItem = styled.li`
@@ -136,12 +156,14 @@ export const TechStackItem = styled.li`
     content: "/";
     margin-left: ${(props) => props.theme.space[1]};
 
-    @media (min-width: 768px){
-      content:"";
+    @media (min-width: 768px) {
+      content: "";
+    }
+
+    @media (min-width: 1440px) {
+      content: "/";
     }
   }
-
-  
 `;
 
 export const BackgroundContainer = styled.div`
@@ -196,6 +218,30 @@ export const ButtonLeft = styled.button<Partial<IProps>>`
     color: ${(props) =>
       !props.disabled ? props.theme.color.mainText : props.theme.color.border};
   }
+
+  & > svg {
+    fill: ${(props) =>
+      !props.disabled ? props.theme.color.mainText : props.theme.color.border};
+  }
+
+  @media (min-width: 1440px) {
+    &&&:hover > *,
+    &&&:focus > * {
+      color: ${(props) =>
+        !props.disabled ? props.theme.color.hover : props.theme.color.border};
+    }
+
+    &&&:hover > svg {
+      fill: ${(props) =>
+        !props.disabled ? props.theme.color.hover : props.theme.color.border};
+    }
+
+    &&&:hover + p,
+    &&&:focus + p {
+      color: ${(props) =>
+        !props.disabled ? props.theme.color.hover : props.theme.color.mainText};
+    }
+  }
 `;
 
 export const ButtonRight = styled.button<Partial<IProps>>`
@@ -213,6 +259,39 @@ export const ButtonRight = styled.button<Partial<IProps>>`
   &:focus {
     border: none;
   }
+
+  & > svg {
+    fill: ${(props) =>
+      !props.disabled ? props.theme.color.mainText : props.theme.color.border};
+  }
+
+  @media (min-width: 1440px) {
+    transition: color 0.3s ease-in-out;
+
+    &&&:hover > *,
+    &&&:focus > * {
+      color: ${(props) =>
+        !props.disabled ? props.theme.color.hover : props.theme.color.border};
+
+      transition: color 0.3s ease-in-out;
+    }
+
+    &&&:hover > svg,
+    &&&:focus > svg {
+      fill: ${(props) =>
+        !props.disabled ? props.theme.color.hover : props.theme.color.border};
+
+      transition: color 0.3s ease-in-out;
+    }
+
+    &&&:hover + p,
+    &&&:focus + p {
+      color: ${(props) =>
+        !props.disabled ? props.theme.color.hover : props.theme.color.mainText};
+
+      transition: color 0.3s ease-in-out;
+    }
+  }
 `;
 
 export const ButtonTitle = styled.h4`
@@ -222,6 +301,8 @@ export const ButtonTitle = styled.h4`
   line-height: 1.13;
   letter-spacing: -0.29px;
   font-weight: ${(props) => props.theme.weight.normal};
+
+  
 `;
 
 export const ButtonText = styled.p`
@@ -236,6 +317,12 @@ export const PreviewsList = styled.ul`
   padding-top: ${(props) => props.theme.space[3]};
 
   margin-bottom: 64px;
+
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${props => props.theme.space[2]};
+  }
 `;
 
 export const PreviewItem = styled.li`
@@ -247,3 +334,11 @@ export const PreviewItem = styled.li`
 export const PreviewImage = styled.img`
   width: ${(props) => props.theme.percentage[10]};
 `;
+
+
+//tablet&desktop
+
+export const DesktopContainer = styled.div`
+text-align: right;
+`
+

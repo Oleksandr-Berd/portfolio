@@ -19,11 +19,22 @@ export const HeaderStyled = styled.header`
     padding-right: ${(props) => props.theme.space[10]};
     padding-left: ${(props) => props.theme.space[10]};
   }
+
+  @media (min-width: 1440px){
+    padding-left: 165px;
+    padding-right: 165px;
+  }
+ 
 `;
 
 export const LogoContainer = styled.div`
   min-width: 60px;
   height: 42px;
+
+  @media (min-width: 1440px){
+    width: 106px;
+    height: 72px;
+  }
 `;
 
 export const LogoImage = styled.img`
@@ -37,4 +48,12 @@ export const ToggleTheme = styled.div`
 & > *{
   margin: 0;
 }
+`
+
+//desktop
+
+export const DesktopContainer = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
 `

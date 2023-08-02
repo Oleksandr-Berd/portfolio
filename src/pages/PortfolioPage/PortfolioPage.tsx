@@ -25,7 +25,9 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
     const lastItemRef = useRef(null);
 
 
-const isTablet = useMediaQuery("(min-width:768px")
+    const isTablet = useMediaQuery("(min-width:768px")
+    const isDesktop = useMediaQuery("(min-width:1440px")
+
 
     const handleDifficultyChange = (eventKey: string | null): void => {
 
@@ -46,7 +48,14 @@ const isTablet = useMediaQuery("(min-width:768px")
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { fetchProjects({ difficulty, tech, currentPage }) }, [difficulty, tech, currentPage])
+    useEffect(() => {
+        if (tech) {
+            setDifficulty("Get All")
+        }
+        
+        fetchProjects({ difficulty, tech, currentPage })
+
+    }, [difficulty, tech, currentPage])
 
     useEffect(() => {
         const handleObserver = async (entries): Promise<void> => {
@@ -102,10 +111,13 @@ const isTablet = useMediaQuery("(min-width:768px")
             <SC.DropDownContainer style={{ marginBottom: !isTablet && "32px" }}>
                 <SC.FilterInputContainer>
                     <SC.FilterLabel htmlFor="tech">Search By Technology</SC.FilterLabel>
-                    <SC.SearchIcon />
+                    <SC.SearchIcon size={isDesktop && 24 } />
                     <SC.SearchFilterInput type="text" name="tech" id="tech" placeholder="type interested technology..." onChange={handleTechChange} />
                 </SC.FilterInputContainer>
-            </SC.DropDownContainer></SC.FilterContainer> : <>
+            </SC.DropDownContainer></SC.FilterContainer> :
+            
+           
+            <>
                 <SC.DropDownContainer>
                     <Dropdown onSelect={handleDifficultyChange}>
                         <SC.DropdownToggle variant="success" id="dropdown-basic">

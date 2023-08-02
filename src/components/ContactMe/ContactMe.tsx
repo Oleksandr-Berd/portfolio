@@ -10,7 +10,7 @@ const ContactMe: React.FC = (): JSX.Element => {
 
     return (<SC.CommonContainer>
         <SC.Title>Interested in doing a project together?</SC.Title>
-        <LinkButton path={path} text={pathText} />
+        <LinkButton path={path} text={pathText} margin="0px" />
     </SC.CommonContainer> );
 }
  

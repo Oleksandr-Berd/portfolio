@@ -81,12 +81,12 @@ const ProjectDetails: React.FC<IProps> = ({ projects }): JSX.Element => {
                 <>
                     <SC.ContentContainer>
                         <SC.Title>{project.title}</SC.Title>
-                        <div>
+                        <SC.DesktopContainer>
                             <SC.TechStackList>
                                 {project.techStack.map(el => (<SC.TechStackItem key={el.toString()}>{el}</SC.TechStackItem>))}
                             </SC.TechStackList>
                             <SC.LinkButton to={project.liveUrl} target="_blank" rel="noopener noreferrer">visit website</SC.LinkButton>
-                        </div>
+                        </SC.DesktopContainer>
                     </SC.ContentContainer>
                     <SC.Text>{project.task}</SC.Text>
                     <SC.BackgroundContainer>
