@@ -1,9 +1,18 @@
 import styled from "styled-components"
 
 export const FormStyled = styled.form`
-padding-top: ${props => props.theme.space[8]};
-padding-bottom: 80px;
-`
+  padding-top: ${(props) => props.theme.space[8]};
+  padding-bottom: 80px;
+
+  @media (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding-top: ${(props) => props.theme.space[11]};
+    padding-bottom: 109px;
+  }
+`;
 
 export const InputStyled = styled.input`
   margin-bottom: ${(props) => props.theme.space[2]};
@@ -72,4 +81,20 @@ export const SubmitButton = styled.button`
   color: ${(props) => props.theme.color.page};
   background-color: ${(props) => props.theme.color.mainText};
   letter-spacing: 2px;
+
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: ${(props) => props.theme.color.page};
+    color: ${(props) => props.theme.color.hover};
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
 `;
+
+//desktop
+
+export const DesktopContainer = styled.div`
+width: ${props => props.theme.percentage[6]};
+
+`

@@ -48,7 +48,14 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { fetchProjects({ difficulty, tech, currentPage }) }, [difficulty, tech, currentPage])
+    useEffect(() => {
+        if (tech) {
+            setDifficulty("Get All")
+        }
+        
+        fetchProjects({ difficulty, tech, currentPage })
+
+    }, [difficulty, tech, currentPage])
 
     useEffect(() => {
         const handleObserver = async (entries): Promise<void> => {

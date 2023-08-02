@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from "formik";
+import { useMediaQuery } from 'usehooks-ts';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,6 +20,8 @@ const validationSchema = Yup.object().shape({
 const ContactForm = () => {
 
     const titleContent = "Contact Me"
+
+    const isDesktop = useMediaQuery("(min-width:1440px)")
 
     const formik = useFormik({
         initialValues: {
@@ -63,15 +66,32 @@ const ContactForm = () => {
         <>
             <ToastContainer />
             <SC.FormStyled onSubmit={handleSubmit}>
-                <SubTitle content={titleContent} />
-                <InputContact typeInput="text" placeholder="Please type your name" label="Name" errorMessage={formik.errors.contactName} name="contactName" handleChange={handleChange} />
-                <InputContact typeInput="text" placeholder="Please type your email" label="Email Address" errorMessage={formik.errors.contactEmail} name="contactEmail" handleChange={handleChange} />
-                <div>
-                    <SC.LabelStyled htmlFor="message">Message</SC.LabelStyled>
-                    <SC.TextAreaStyled placeholder="How can I help?" onChange={handleChange} name="message" rows={6} />
-                    {formik.errors.message ? <SC.ErrorStyled>{formik.errors.message}</SC.ErrorStyled> : <SC.ErrorStyled style={{ color: "transparent" }}>empty error</SC.ErrorStyled>}
-                </div>
-                <SC.SubmitButton type='submit'>send message</SC.SubmitButton>
+                {isDesktop ? <>
+                    <SubTitle content={titleContent} />
+                    <SC.DesktopContainer>
+                        <InputContact typeInput="text" placeholder="Please type your name" label="Name" errorMessage={formik.errors.contactName} name="contactName" handleChange={handleChange} />
+                        <InputContact typeInput="text" placeholder="Please type your email" label="Email Address" errorMessage={formik.errors.contactEmail} name="contactEmail" handleChange={handleChange} />
+                        <div>
+                            <SC.LabelStyled htmlFor="message">Message</SC.LabelStyled>
+                            <SC.TextAreaStyled placeholder="How can I help?" onChange={handleChange} name="message" rows={6} />
+                            {formik.errors.message ? <SC.ErrorStyled>{formik.errors.message}</SC.ErrorStyled> : <SC.ErrorStyled style={{ color: "transparent" }}>empty error</SC.ErrorStyled>}
+                        </div>
+                        <SC.SubmitButton type='submit'>send message</SC.SubmitButton>  
+                </SC.DesktopContainer>
+                </> :
+                    <>
+                        <SubTitle content={titleContent} />
+                        <InputContact typeInput="text" placeholder="Please type your name" label="Name" errorMessage={formik.errors.contactName} name="contactName" handleChange={handleChange} />
+                        <InputContact typeInput="text" placeholder="Please type your email" label="Email Address" errorMessage={formik.errors.contactEmail} name="contactEmail" handleChange={handleChange} />
+                        <div>
+                            <SC.LabelStyled htmlFor="message">Message</SC.LabelStyled>
+                            <SC.TextAreaStyled placeholder="How can I help?" onChange={handleChange} name="message" rows={6} />
+                            {formik.errors.message ? <SC.ErrorStyled>{formik.errors.message}</SC.ErrorStyled> : <SC.ErrorStyled style={{ color: "transparent" }}>empty error</SC.ErrorStyled>}
+                        </div>
+                        <SC.SubmitButton type='submit'>send message</SC.SubmitButton>
+                    </>
+                }
+                
             </SC.FormStyled>
         </>);
        
