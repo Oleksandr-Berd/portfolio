@@ -78,7 +78,7 @@ const lightTheme: object = {
     mainText: "#33323D",
     border: "#979797",
     secondaryBody: "#ffffff",
-
+    hover: "#D2691E",
     placeholder:"#203A4C",
 
     main: "#10141E",

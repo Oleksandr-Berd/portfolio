@@ -8,6 +8,10 @@ export const NavList = styled.ul`
   flex-direction: row;
   align-items: center;
 }
+
+@media (min-width: 1440px){
+  margin-left: ${props => props.theme.space[10]};
+}
 `
 
 export const Item = styled.li`
@@ -24,18 +28,32 @@ export const Item = styled.li`
 `;
 
 export const ItemLink = styled(NavLink)<Pick<INavBarProps, "$position" | "active">>`
-
   text-decoration: none;
   text-transform: uppercase;
   font-weight: ${(props) => props.theme.weight.normal};
   color: ${(props) =>
     props.$position === "footer"
       ? props.theme.color.secondaryBody
-    : props.$position === "header" && props.active === "active" ? props.theme.color.cyan :
-    props.theme.color.mainText};
-      
+      : props.$position === "header" && props.active === "active"
+      ? props.theme.color.cyan
+      : props.theme.color.mainText};
+
   font-family: ${(props) => props.theme.fontFamily.body};
   font-size: ${(props) => props.theme.size.XS};
   letter-spacing: 2px;
+
+  @media (min-width: 1440px) {
+    font-size: ${(props) =>
+      props.$position === "header" ? props.theme.size.S : props.theme.size.XS};
+
+transition: color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: ${(props) => props.theme.color.hover};
+      transition: color 0.3s ease-in-out;
+      text-decoration: none;
+    }
+  }
 `;
 

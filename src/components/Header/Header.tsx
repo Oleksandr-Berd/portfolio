@@ -19,6 +19,7 @@ const Header: React.FC = (): JSX.Element => {
     const [isOpened, setIsOpened] = useState<boolean>(false)
 
     const isMobile = useMediaQuery('(max-width: 767px)')
+    const isDesktop = useMediaQuery("(min-width:1440px)")
 
     const handleMenu = (): void => {
         setIsOpened(!isOpened)
@@ -35,10 +36,22 @@ const Header: React.FC = (): JSX.Element => {
         <SC.LogoContainer>
             <SC.LogoImage src={logo} alt="logo" />
         </SC.LogoContainer>
+        {!isDesktop ?
+            <>
+            <SC.ToggleTheme>
+                    <Switch labelElement={theme === "light" ? <BsSun size={20} style={{ marginLeft: "8px" }} /> : <DarkThemeSvg width={20} style={{ marginLeft: "8px" }} />} onChange={toggleTheme} checked={theme === "light"} />
+            </SC.ToggleTheme>
+                {isMobile ? <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /> : <PageNav $position="header" />}
+            </>
+        :
+        <SC.DesktopContainer>
         <SC.ToggleTheme>
-            <Switch labelElement={theme === "light" ? <BsSun size={20} /> :<DarkThemeSvg width={20}/>} onChange={toggleTheme} checked={theme === "light"} />
+                    <Switch large labelElement={theme === "light" ? <BsSun size={28} style={{ marginLeft: "8px" }} /> : <DarkThemeSvg width={28} style={{ marginLeft: "8px" }} />} onChange={toggleTheme} checked={theme === "light"} />
         </SC.ToggleTheme>
-        {isMobile ? <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /> : <PageNav $position="header"/>}
+            {isMobile ? <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /> : <PageNav $position="header" />}
+        </SC.DesktopContainer>
+        }
+       
 
     </SC.HeaderStyled>
     )

@@ -77,7 +77,8 @@ const darkTheme: object = {
     dark: "#203A4C",
     secondaryBody: "#33323D",
     border: "#979797",
-    mainText: "#FAFAFA",
+      mainText: "#FAFAFA",
+    hover: "#D2691E",
 
       placeholder: "#203A4C",
 
