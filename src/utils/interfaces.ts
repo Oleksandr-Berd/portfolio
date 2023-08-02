@@ -22,7 +22,7 @@ export interface IBurgerMenuProps {
    id: number;
    title: string;
    path: string;
-   position: "header" | "footer";
+   $position: "header" | "footer";
    pathname: string;
    active: string | null;
  }

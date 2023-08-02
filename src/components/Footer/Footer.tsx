@@ -19,7 +19,7 @@ const Footer: React.FC = (): JSX.Element => {
         <SC.LogoContainer>
             <SC.LogoImage src={logo} alt="logo" />
         </SC.LogoContainer>
-        <NavBar navList={<PageNav position="footer"/>} margin={isMobile ? "40px" : "0"} />
+        <NavBar navList={<PageNav $position="footer"/>} margin={isMobile ? "40px" : "0"} />
         <NavBar navList={<SocNet theme={theme} $justified="center"/>} />
     </SC.FooterStyled> );
 }

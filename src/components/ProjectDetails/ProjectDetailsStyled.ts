@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 interface IProps {
-    $level: String;
+  $level: String;
 }
 
 export const ItemStyled = styled.div`
@@ -72,6 +72,15 @@ export const ContentContainer = styled.div`
   padding-bottom: ${(props) => props.theme.space[6]};
 
   border-bottom: 1px solid ${(props) => props.theme.color.border};
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    margin-bottom: ${props => props.theme.space[6]};
+  }
 `;
 
 export const Title = styled.h3`
@@ -114,13 +123,25 @@ export const TechStackList = styled.ul`
   font-weight: ${(props) => props.theme.weight.bold};
   line-height: 2.31;
   color: ${(props) => props.theme.color.cyan};
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${props => props.theme.space[3]};
+  }
 `;
 
 export const TechStackItem = styled.li`
   &:not(:last-child)::after {
     content: "/";
     margin-left: ${(props) => props.theme.space[1]};
+
+    @media (min-width: 768px){
+      content:"";
+    }
   }
+
+  
 `;
 
 export const BackgroundContainer = styled.div`
@@ -201,7 +222,6 @@ export const ButtonTitle = styled.h4`
   line-height: 1.13;
   letter-spacing: -0.29px;
   font-weight: ${(props) => props.theme.weight.normal};
- 
 `;
 
 export const ButtonText = styled.p`
@@ -209,7 +229,6 @@ export const ButtonText = styled.p`
   line-height: 1.86;
   opacity: 0.4;
 `;
-
 
 //Preview
 
@@ -226,7 +245,5 @@ export const PreviewItem = styled.li`
 `;
 
 export const PreviewImage = styled.img`
-width: ${props => props.theme.percentage[10]};
-
-
-`
+  width: ${(props) => props.theme.percentage[10]};
+`;

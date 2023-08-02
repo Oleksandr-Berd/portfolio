@@ -16,6 +16,15 @@ export const HeroContainer = styled.div<IProps>`
 
     background-image: url(${(props) => props.$heroImage});
     background-size: contain;
+
+    @media (min-width: 820px) {
+      background-size: cover;
+    }
+
+    @media (min-width: 1440px) {
+      background-size: contain;
+      padding-top: 380px;
+    }
   }
 `;
 
@@ -37,6 +46,10 @@ export const Title = styled.h2`
     margin-bottom: ${(props) => props.theme.space[6]};
 
     font-size: ${(props) => props.theme.size.XXN};
+  }
+
+  @media (min-width: 1440px){
+    font-size: ${props => props.theme.size.XM}
   }
 `;
 
@@ -75,4 +88,8 @@ export const ContentContainer = styled.div`
   padding-right: ${(props) => props.theme.space[12]};
 
   background-color: ${(props) => props.theme.color.page};
+
+  @media (min-width: 1440px){
+    width: 460px;
+  }
 `;
