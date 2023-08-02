@@ -55,6 +55,7 @@ const PortfolioPage: React.FC<IProps> = ({ isLoading, projects, fetchProjects, t
         
         fetchProjects({ difficulty, tech, currentPage })
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [difficulty, tech, currentPage])
 
     useEffect(() => {
