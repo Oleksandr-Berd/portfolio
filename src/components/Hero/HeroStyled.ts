@@ -72,9 +72,12 @@ export const ButtonLink = styled.a`
 
   transition: color 0.3s ease-in-out;
 
-  &:hover,
-  &:focus,
-  &:active {
+&:focus{
+  outline: none;
+}
+
+  &:hover
+   {
     text-decoration: none;
     color: ${(props) => props.theme.color.hover};
     transition: color 0.3s ease-in-out;
