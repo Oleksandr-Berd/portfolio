@@ -117,8 +117,12 @@ export const LinkButton = styled(NavLink)`
 
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
-  &:hover,
-  &:focus {
+&:focus{
+  outline: none;
+}
+
+  &:hover
+  {
     background-color: ${(props) => props.theme.color.mainText};
     color: ${(props) => props.theme.color.hover};
 
@@ -225,8 +229,8 @@ export const ButtonLeft = styled.button<Partial<IProps>>`
   }
 
   @media (min-width: 1440px) {
-    &&&:hover > *,
-    &&&:focus > * {
+    &&&:hover > *
+    {
       color: ${(props) =>
         !props.disabled ? props.theme.color.hover : props.theme.color.border};
     }
@@ -236,8 +240,8 @@ export const ButtonLeft = styled.button<Partial<IProps>>`
         !props.disabled ? props.theme.color.hover : props.theme.color.border};
     }
 
-    &&&:hover + p,
-    &&&:focus + p {
+    &&&:hover + p
+    {
       color: ${(props) =>
         !props.disabled ? props.theme.color.hover : props.theme.color.mainText};
     }
@@ -255,8 +259,7 @@ export const ButtonRight = styled.button<Partial<IProps>>`
       !props.disabled ? props.theme.color.mainText : props.theme.color.border};
   }
 
-  &:active,
-  &:focus {
+  &:active{
     border: none;
   }
 
@@ -268,24 +271,23 @@ export const ButtonRight = styled.button<Partial<IProps>>`
   @media (min-width: 1440px) {
     transition: color 0.3s ease-in-out;
 
-    &&&:hover > *,
-    &&&:focus > * {
+    &&&:hover > *{
       color: ${(props) =>
         !props.disabled ? props.theme.color.hover : props.theme.color.border};
 
       transition: color 0.3s ease-in-out;
     }
 
-    &&&:hover > svg,
-    &&&:focus > svg {
+    &&&:hover > svg
+    {
       fill: ${(props) =>
         !props.disabled ? props.theme.color.hover : props.theme.color.border};
 
       transition: color 0.3s ease-in-out;
     }
 
-    &&&:hover + p,
-    &&&:focus + p {
+    &&&:hover + p
+    {
       color: ${(props) =>
         !props.disabled ? props.theme.color.hover : props.theme.color.mainText};
 

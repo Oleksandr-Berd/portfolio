@@ -1,7 +1,8 @@
+import { useMediaQuery } from 'usehooks-ts';
+
 import * as SC from "./ProjectStyled"
 
 import { Project } from "../../utils/interfaces";
-import { useMediaQuery } from 'usehooks-ts';
 
 const ProjectItem: React.FC<Partial<Project>> = (args): JSX.Element => {
 

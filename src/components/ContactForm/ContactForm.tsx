@@ -49,17 +49,32 @@ const ContactForm = () => {
 
         console.log(response);
 
+        if (formik.errors) {
+            toast.error(`All fields are need to be filled properly!`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            }); 
+        } else {
+            toast.success(`${contactName}, Your message is sent and will be considered ASAP! `, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
 
-        toast.success(`${contactName}Your message is sent and will be considered ASAP! `, {
-            position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        });
+
+       
     }
 
     return (

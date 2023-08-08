@@ -68,7 +68,20 @@ export const ButtonLink = styled.a`
 
   font-size: ${(props) => props.theme.size.XXS};
   background-color: ${(props) => props.theme.color.dark};
-  color: #FAFAFA;
+  color: #fafafa;
+
+  transition: color 0.3s ease-in-out;
+
+&:focus{
+  outline: none;
+}
+
+  &:hover
+   {
+    text-decoration: none;
+    color: ${(props) => props.theme.color.hover};
+    transition: color 0.3s ease-in-out;
+  }
 `;
 
 

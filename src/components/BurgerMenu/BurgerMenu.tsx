@@ -38,14 +38,12 @@ const BurgerMenu: React.FC<IBurgerMenuProps> = ({ handleMenu }): JSX.Element => 
     };
 
     return (
-        <div>
             <SC.MenuStyled>
                 <MenuItem onClick={handleClick} text="home" />
                 <MenuItem onClick={handleClick} text="portfolio" />
                 <MenuItem onClick={handleClick} text="contact me" />
                 {isLoggedIn ? <MenuItem onClick={handleClick} text="add project" /> : null}
             </SC.MenuStyled>
-        </div>
     );
 };
 

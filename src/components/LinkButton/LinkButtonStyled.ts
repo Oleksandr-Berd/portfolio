@@ -21,8 +21,13 @@ export const ButtonLink = styled(NavLink)`
 
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
-    &:hover,
-    &:focus {
+
+&:focus{
+  outline: none;
+}
+
+    &:hover
+    {
       background-color: ${(props) => props.theme.color.mainText};
       color: ${(props) => props.theme.color.hover};
 

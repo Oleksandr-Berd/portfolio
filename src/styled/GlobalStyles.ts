@@ -29,4 +29,9 @@ ul, nav{
 img{
     display: block;
 }
+
+button{
+  outline: none;
+}
 `;
+

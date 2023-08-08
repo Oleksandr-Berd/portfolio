@@ -19,7 +19,7 @@ const Header: React.FC = (): JSX.Element => {
     const [isOpened, setIsOpened] = useState<boolean>(false)
 
     const isMobile = useMediaQuery('(max-width: 767px)')
-    const isDesktop = useMediaQuery("(min-width:1440px)")
+    const isTablet = useMediaQuery("(min-width:748px)")
 
     const handleMenu = (): void => {
         setIsOpened(!isOpened)
@@ -35,12 +35,13 @@ const Header: React.FC = (): JSX.Element => {
     return (<SC.HeaderStyled>
         <SC.LogoContainer>
             <SC.LogoImage src={logo} alt="logo" />
+            {isMobile ? <SC.ToggleTheme>
+                <Switch labelElement={theme === "light" ? <BsSun size={20} style={{ marginLeft: "8px" }} /> : <DarkThemeSvg width={20} style={{ marginLeft: "8px" }} />} onChange={toggleTheme} checked={theme === "light"} />
+            </SC.ToggleTheme> :  null}
         </SC.LogoContainer>
-        {!isDesktop ?
+        {!isTablet ?
             <>
-            <SC.ToggleTheme>
-                    <Switch labelElement={theme === "light" ? <BsSun size={20} style={{ marginLeft: "8px" }} /> : <DarkThemeSvg width={20} style={{ marginLeft: "8px" }} />} onChange={toggleTheme} checked={theme === "light"} />
-            </SC.ToggleTheme>
+           
                 {isMobile ? <HamburgerMenu handleMenu={handleMenu} isOpen={isOpened} /> : <PageNav $position="header" />}
             </>
         :
