@@ -31,6 +31,12 @@ export const LogoContainer = styled.div`
   min-width: 60px;
   height: 42px;
 
+  @media (max-width: 767px){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   @media (min-width: 1440px){
     width: 106px;
     height: 72px;
@@ -40,10 +46,16 @@ export const LogoContainer = styled.div`
 export const LogoImage = styled.img`
   width: ${(props) => props.theme.percentage[10]};
   height: ${(props) => props.theme.percentage[10]};
+
+  @media (max-width: 767px){
+    margin-right: ${props => props.theme.space[10]};
+  }
 `;
 
 
 export const ToggleTheme = styled.div`
+
+
 
 & > *{
   margin: 0;

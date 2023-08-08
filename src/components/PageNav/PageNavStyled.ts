@@ -3,16 +3,18 @@ import styled from "styled-components"
 import { INavBarProps } from "../../utils/interfaces";
 
 export const NavList = styled.ul`
-@media (min-width: 768px){
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-@media (min-width: 1440px){
-  margin-left: ${props => props.theme.space[10]};
-}
-`
+    margin-left: ${(props) => props.theme.space[10]};
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: ${(props) => props.theme.space[10]};
+  }
+`;
 
 export const Item = styled.li`
 
