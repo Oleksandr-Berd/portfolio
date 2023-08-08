@@ -48,10 +48,16 @@ export const ItemLink = styled(NavLink)<Pick<INavBarProps, "$position" | "active
     font-size: ${(props) =>
       props.$position === "header" ? props.theme.size.S : props.theme.size.XS};
 
-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
 
-    &:hover,
+    &:active,
     &:focus {
+      color: ${(props) => props.theme.color.cyan};
+      border: none;
+      outline: none;
+    }
+
+    &:hover {
       color: ${(props) => props.theme.color.hover};
       transition: color 0.3s ease-in-out;
       text-decoration: none;
