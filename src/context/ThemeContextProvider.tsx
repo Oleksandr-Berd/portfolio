@@ -12,9 +12,10 @@ interface IProps {
 
 export default class ThemeContextProvider extends Component< IProps, IState> {
     state = {
-        theme: "light",
+        theme: localStorage.getItem('theme'),
         toggle: (theme) => {
-            this.setState({ theme: theme === "light" ? "dark" : "light"});
+            this.setState({ theme: theme === "light" ? "dark" : "light" });
+            localStorage.setItem('theme', theme === "light" ? "dark" : "light")
         }
     }
 
