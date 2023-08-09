@@ -44,13 +44,10 @@ const ContactForm = () => {
 
         const { contactName, contactEmail, message } = formik.values;
 
-
         const response = await sendMessage({ contactName, contactEmail, message })
+        
 
-        console.log(response);
-
-        if (formik.errors) {
-            toast.error(`All fields are need to be filled properly!`, {
+        if (formik.errors.contactName || formik.errors.message || formik.errors.contactEmail) {toast.error(`All fields are need to be filled properly!`, {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -59,22 +56,20 @@ const ContactForm = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
-            }); 
-        } else {
+        })}
+        
+        if (response) {
+            formik.resetForm();
             toast.success(`${contactName}, Your message is sent and will be considered ASAP! `, {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-        }
-
-
-       
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        }); }
     }
 
     return (
