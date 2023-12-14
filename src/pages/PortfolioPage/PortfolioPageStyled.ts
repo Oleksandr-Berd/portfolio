@@ -12,6 +12,15 @@ export const DropDownContainer = styled.form`
   }
 `;
 
+export const DropdownStyled = styled(Dropdown)`
+  &&&:active,
+  &&&:focus,
+  &&&:hover {
+    background: transparent;
+   
+  }
+`;
+
 export const DropdownToggle = styled(Dropdown.Toggle)`
   background: transparent;
   color: ${(props) => props.theme.color.mainText};
@@ -23,8 +32,18 @@ export const DropdownToggle = styled(Dropdown.Toggle)`
   &&&:focus,
   &&&:hover {
     background: transparent;
-    color: ${(props) => props.theme.color.semiDark};
+    color: ${(props) => props.theme.color.difficulty};
     border-color: ${(props) => props.theme.color.border};
+  }
+  &&&.btn-primary {
+    --bs-btn-bg: initial;
+    --bs-btn-border-color: initial;
+    --bs-btn-hover-bg: initial;
+    --bs-btn-hover-color: initial;
+    --bs-btn-active-bg: initial;
+    --bs-btn-active-border-color: initial;
+    --bs-btn-disabled-bg: initial;
+    --bs-btn-disabled-border-color: initial;
   }
 
   @media (min-width: 1440px) {
@@ -40,6 +59,12 @@ export const DropdownMenu = styled(Dropdown.Menu)`
   padding-left: ${(props) => props.theme.space[4]};
 
   background: ${(props) => props.theme.color.page};
+
+  &&&:active,
+  &&&:focus,
+  &&&:hover {
+    background: ${(props) => props.theme.color.page};
+  }
 
   @media (min-width: 1440px) {
     width: calc(

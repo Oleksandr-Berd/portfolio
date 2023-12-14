@@ -81,6 +81,7 @@ const lightTheme: object = {
     hover: "#D2691E",
     placeholder:"#203A4C",
 
+    difficulty: "#161D2F",
     main: "#10141E",
     secondary: "#5A698F",
     semiDark: "#161D2F",

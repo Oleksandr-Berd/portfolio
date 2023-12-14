@@ -82,6 +82,7 @@ const darkTheme: object = {
 
     placeholder: "#203A4C",
 
+    difficulty:"#fff",
     main: "#10141E",
     secondary: "#5A698F",
     semiDark: "#161D2F",
