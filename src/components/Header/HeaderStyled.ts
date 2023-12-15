@@ -54,13 +54,17 @@ export const LogoImage = styled.img`
 
 
 export const ToggleTheme = styled.div`
+  & > * {
+    margin: 0;
+  }
 
-
-
-& > *{
-  margin: 0;
-}
-`
+  & svg {
+    margin-bottom: 4px;
+    
+      margin-left: 20px !important;
+    
+  }
+`;
 
 //desktop
 
