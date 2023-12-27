@@ -209,3 +209,24 @@ export const FilterContainer = styled.div`
     flex-direction: column;
   }
 `;
+
+
+export const ProjectsList = styled.ul`
+margin-top: 86px;
+`
+
+export const TotalProjectsCon = styled.div`
+margin-top: 86px;
+
+text-align: right;
+
+font-size: 42px;
+font-weight: bold;
+font-style: italic;
+
+color: ${props => props.theme.color.text};
+
+& span{
+  color: ${props => props.theme.color.hover}
+}
+`
